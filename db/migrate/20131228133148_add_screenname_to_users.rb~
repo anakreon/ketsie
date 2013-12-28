@@ -1,0 +1,4 @@
+class AddScreennameToUsers < ActiveRecord::Migration
+  def change
+  end
+end

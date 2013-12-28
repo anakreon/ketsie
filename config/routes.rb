@@ -1,6 +1,10 @@
 Ketsie::Application.routes.draw do
   
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
+  
+  resources :followers
   
   get "home/index"
   devise_for :users

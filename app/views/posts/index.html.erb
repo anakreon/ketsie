@@ -1,0 +1,37 @@
+Your wall:<br />
+---------
+
+<table id='table_posts_list'>
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td class='wide'><%= post.text %></td>
+        <td class>
+        	<% if post.images %> 
+        		<% post.images.each do |image| %>
+		            <p>
+		              <% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
+		                <%= image_tag url_for({:action => 'image', :id=> image.id, :filename => image.file_name}), :alt => image.file_name, :size => "350x300" %> 
+		              <% end %> 
+		              <br /> 
+		            </p>
+            	<% end %>
+        	<% end %></td>
+          
+        <td><%= link_to ('text_show'), post %></td>
+        <td><%= link_to ('text_edit'), edit_post_path(post) %></td>
+        <td><%= link_to ('text_destroy'), post, method: :delete, data: { confirm: ('post_confirm') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br />
+---------
+<br />
