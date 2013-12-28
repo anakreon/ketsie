@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_followed_id: 
+  user_following_id: 
+  created: 2013-12-27 18:36:34
+
+two:
+  user_followed_id: 
+  user_following_id: 
+  created: 2013-12-27 18:36:34
