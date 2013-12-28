@@ -14,10 +14,8 @@ Your wall:<br />
         <td class>
         	<% if post.images %> 
         		<% post.images.each do |image| %>
-		            <p>
-		              <% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
-		                <%= image_tag url_for({:action => 'image', :id=> image.id, :filename => image.file_name}), :alt => image.file_name, :size => "350x300" %> 
-		              <% end %> 
+		            <p>		               
+		                <%= image_tag url_for({:action => 'image', :id=> image.id, :filename => image.file_name}), :alt => image.file_name, :size => "350x300" %> 		               
 		              <br /> 
 		            </p>
             	<% end %>

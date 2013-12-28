@@ -2,6 +2,7 @@ Ketsie::Application.routes.draw do
   
   resources :posts do
     resources :comments
+    resources :images
   end
   
   resources :followers

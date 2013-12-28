@@ -1,19 +1,8 @@
-<%= form_for @post do |f| %>
-  <% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@post.errors.count, "error") %> prohibited
-      this post from being saved:</h2>
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>  
+  <%= render "form_header" %>
  
   <p>
     Post from<br>
-    <%= current_user.nickname %>
+    <%= current_user.screenname %>
   </p>
  
   <p>
@@ -21,12 +10,12 @@
     <%= f.text_area :text %>
   </p>
   
-  <div class="field"> 
-  	<%= f.label :photo %> 
-  	<%= f.file_field :photo %> 
-  </div>
+  <% if @images %>
+    <% @images.each do |image| %>
+  
+  	<%= render "image" %> 
  
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+    <% end %>
+  <% end %>
+  
+  <%= render "form_footer" %> 

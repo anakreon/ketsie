@@ -2,4 +2,6 @@
  
 <%= render 'form' %>
 
+<%= link_to 'Add Image', new_post_image_path(@post.id) %>
+<br />
 <%= link_to 'Back', posts_path %>

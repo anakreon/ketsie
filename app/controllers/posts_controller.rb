@@ -5,11 +5,14 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = current_user.posts.new    
+    @post = current_user.posts.new
+    @image = @post.images.new
   end
   
   def edit
     @post = current_user.posts.find(params[:id])
+    @images = @post.images.all
+    if !@images then @image = @post.images.new end
   end
   
   def create    
@@ -24,7 +27,16 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
    
-    if @post.update(params[:post].permit(:text))
+    
+    if(params[:image])
+      @image = @post.images.new(image_params)
+      @image.post_id = current_user.id;
+      if !@image.save
+        render 'edit'
+      end
+    end
+   
+    if @post.update(params[:post].permit(:text))      
       redirect_to @post
     else
       render 'edit'
@@ -38,6 +50,10 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:text)
+  end
+  
+  def image_params
+    params.require(:post).permit(:image_data, :description)
   end
   
 end
