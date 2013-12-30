@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228163023) do
+ActiveRecord::Schema.define(version: 20131230135936) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(version: 20131228163023) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "followers", force: true do |t|
-    t.integer  "user_followed_id"
-    t.integer  "user_following_id"
-    t.datetime "created"
+    t.integer  "followed_user_id"
+    t.integer  "following_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "followers", ["user_followed_id"], name: "index_followers_on_user_followed_id"
-  add_index "followers", ["user_following_id"], name: "index_followers_on_user_following_id"
+  add_index "followers", ["followed_user_id", "following_user_id"], name: "index_followers_on_followed_user_id_and_following_user_id", unique: true
+  add_index "followers", ["followed_user_id"], name: "index_followers_on_followed_user_id"
+  add_index "followers", ["following_user_id"], name: "index_followers_on_following_user_id"
 
   create_table "images", force: true do |t|
     t.binary   "image_data"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20131228163023) do
   create_table "likes", force: true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
-    t.datetime "created"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,8 +61,6 @@ ActiveRecord::Schema.define(version: 20131228163023) do
   create_table "posts", force: true do |t|
     t.integer  "user_id"
     t.string   "text"
-    t.datetime "posted_at"
-    t.datetime "edited_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

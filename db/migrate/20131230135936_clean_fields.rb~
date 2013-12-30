@@ -1,0 +1,8 @@
+class CleanFields < ActiveRecord::Migration
+  def change
+	  remove_column :followers, :created
+	  remove_column :likes, :created
+	  remove_column :post, :posted_at
+	  remove_column :post, :edited_at
+  end
+end

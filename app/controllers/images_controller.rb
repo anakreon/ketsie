@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :authenticate_user!
   
   def new
     @post = current_user.posts.find(params[:post_id])
