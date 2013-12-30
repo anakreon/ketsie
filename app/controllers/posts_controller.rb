@@ -3,6 +3,15 @@ class PostsController < ApplicationController
  
   def index
     @posts = current_user.posts.all
+    @followed_users = current_user.followed_users.all
+    #@followed_posts = Array.new 
+    @followed_users.each do |user|
+      user.posts.each do |post|
+        #@followed_posts.push(post)
+        @posts.push(post)
+      end
+    end
+    @posts.sort! { |a,b| b.updated_at <=> a.updated_at }
   end
   
   def new

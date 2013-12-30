@@ -10,7 +10,7 @@
 Following:
 <br />
     <p>	
-    	<%= user.screenname %>      		               		 		               
+    	<%= user.screenname %> <%= link_to ('Unfollow'), "followers/"+user.id.to_s, method: :delete, data: { confirm: ('post_confirm') } %>         
       <br /> 
     </p>
  <% end %>

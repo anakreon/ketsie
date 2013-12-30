@@ -20,5 +20,14 @@ class FollowersController < ApplicationController
     end
   end
   
+  def destroy
+    @follower = Follower.find_by(followed_user_id: params[:id], following_user_id: current_user.id)
+    @follower.destroy
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.json { head :no_content }
+    end
+  end
+  
 end
 
