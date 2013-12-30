@@ -11,6 +11,7 @@ Ketsie::Application.routes.draw do
   get 'images/image' => 'images#image'
   get 'userInfos/avatar' => 'user_infos#avatar'
   get 'user_infos/:post_id/destroyAvatar' => 'user_infos#destroy_avatar'
+  get 'posts/like/:post_id' => 'posts#like'
     
   get "home/index"
   devise_for :users

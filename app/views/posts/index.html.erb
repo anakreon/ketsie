@@ -11,7 +11,7 @@ Your wall:<br />
   <tbody>  	
     <% @posts.each do |post| %>
       <tr>
-      	<td><%= post.user.screenname %></td>
+      	<td><%= post.user.screenname %> </td>
       	<td><%= post.updated_at %></td>
         <td class='wide'>
         <%= raw post.text %>        	
@@ -27,18 +27,35 @@ Your wall:<br />
 		            </p>
             	<% end %>
         	<% end %></td>
-        <% if post.user_id == current_user.id %>
-        	<td><%= link_to ('text_show'), post %></td>        
+        	
+       	<% if @liked_by[post.id] %>
+        	<td>Liked by: 
+        		<% @liked_by[post.id].each do |user| %>
+        		<%= user.screenname+" " %>
+        		<% end %>
+        	</td>  
+        <% end %>
+        <% if @likeable[post.id] %>
+        	<td><%= link_to ('like'), "posts/like/"+post.id.to_s %></td>  
+        <% else %>
+        	<td><%= link_to ('stop liking'), "posts/like/"+post.id.to_s %></td>
+        <% end %>
+        <td><%= link_to ('text_show'), post %></td>     
+        <% if post.user_id == current_user.id %>        	 
 	        <td><%= link_to ('text_edit'), edit_post_path(post) %></td>
 	        <td><%= link_to ('text_destroy'), post, method: :delete, data: { confirm: ('post_confirm') } %></td>
         <% end %>
+        
+		<td>Comments</td>
+		<td>
+		<%= render post.comments %>
+		</td>	 
+
       </tr>
     <% end %>
     
   </tbody>
 </table>
-
-
 <br />
 ---------
 <br />

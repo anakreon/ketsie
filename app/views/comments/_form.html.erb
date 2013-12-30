@@ -1,7 +1,7 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <p>
     <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.text_field :user_id, :value => current_user.id, disabled: 'disabled'  %>
   </p>
   <p>
     <%= f.label :text %><br />
