@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131230135936) do
+ActiveRecord::Schema.define(version: 20131230164259) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 20131230135936) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "user_infos", force: true do |t|
+    t.binary  "avatar_image"
+    t.text    "personal_description"
+    t.integer "user_id"
+    t.string  "file_name"
+    t.string  "file_type"
+  end
+
+  add_index "user_infos", ["user_id"], name: "index_user_infos_on_user_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

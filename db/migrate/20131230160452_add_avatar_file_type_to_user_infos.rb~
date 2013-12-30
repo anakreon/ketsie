@@ -1,0 +1,4 @@
+class AddAvatarFileTypeToUserInfos < ActiveRecord::Migration
+  def change
+  end
+end

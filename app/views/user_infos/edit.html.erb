@@ -1,0 +1,39 @@
+<h1>Editing User Data</h1>
+ 
+ <%= form_for @user_info do |f| %>
+  <% if @user_info.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user_info.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @user_info.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>  
+  
+  <% if @user_info.file_name.length > 0 %>
+  <p>  	 
+  	<%= image_tag url_for({:action => 'avatar', :id=> @user_info.id, :filename => @user_info.file_name}), :alt => @user_info.file_name, :size => "350x300" %> 
+  </p>
+  	<%= link_to ('delete avatar'), "destroyAvatar", data: { confirm: ('post_confirm') } %>
+  <% end %>
+ 
+  <p>
+    <%= f.label :personal_description %><br>
+    <%= f.text_area :personal_description %>
+  </p>
+  
+  <div> 
+   <%= f.label :avatar_image %> 
+   <%= f.file_field :avatar_image %> 
+  </div>  
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<br />
+<%= link_to 'Back', root_path %>

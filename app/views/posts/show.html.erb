@@ -5,8 +5,10 @@
 
 <p>
   <strong>Text:</strong>
-  <%= @post.text %>
+  <%= raw @post.text %>
 </p>
+
+<%= @post.inspect %>
 
 <% if @post.images %>
     <% @post.images.each do |image| %>

@@ -5,9 +5,12 @@ Ketsie::Application.routes.draw do
     resources :images
   end
   
+  resources :user_infos
   resources :followers
   
   get 'images/image' => 'images#image'
+  get 'userInfos/avatar' => 'user_infos#avatar'
+  get 'user_infos/:post_id/destroyAvatar' => 'user_infos#destroy_avatar'
     
   get "home/index"
   devise_for :users

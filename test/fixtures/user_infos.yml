@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  avatar_image: 
+  personal_description: MyText
+
+two:
+  avatar_image: 
+  personal_description: MyText

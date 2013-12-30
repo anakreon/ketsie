@@ -8,11 +8,14 @@ Your wall:<br />
     </tr>
   </thead>
 
-  <tbody>
+  <tbody>  	
     <% @posts.each do |post| %>
       <tr>
+      	<td><%= post.user.screenname %></td>
       	<td><%= post.updated_at %></td>
-        <td class='wide'><%= post.text %></td>
+        <td class='wide'>
+        <%= raw post.text %>        	
+        </td>
         <td class>
         	<% if post.images %> 
         		<% post.images.each do |image| %>
