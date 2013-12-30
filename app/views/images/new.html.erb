@@ -1,5 +1,5 @@
 
-<%= form_for @image, url: {action: "create"}, {:multipart => true, :method => :post} do |f| %>
+<%= form_for @image, url: {action: "create"} do |f| %>
   <% if @image.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@image.errors.count, "error") %> prohibited
@@ -23,9 +23,6 @@
   	<%= f.text_area :description %> 
   </div>
   
-  
-  <!-- #render partial: 'posts/image', layout: "posts/form_layout" %> -->
-
   <p>
     <%= f.submit %>
   </p>

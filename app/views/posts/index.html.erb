@@ -1,3 +1,4 @@
+<br />
 Your wall:<br />
 ---------
 
@@ -14,8 +15,10 @@ Your wall:<br />
         <td class>
         	<% if post.images %> 
         		<% post.images.each do |image| %>
-		            <p>		               
-		                <%= image_tag url_for({:action => 'image', :id=> image.id, :filename => image.file_name}), :alt => image.file_name, :size => "350x300" %> 		               
+		            <p>	
+		            	<% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
+        					<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name, :size => "350x300" %>
+    					<% end %>	               		               		 		               
 		              <br /> 
 		            </p>
             	<% end %>
@@ -33,3 +36,4 @@ Your wall:<br />
 <br />
 ---------
 <br />
+<%= link_to 'Back', root_path %>

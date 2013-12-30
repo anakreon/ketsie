@@ -8,6 +8,18 @@
   <%= @post.text %>
 </p>
 
+<% if @post.images %>
+    <% @post.images.each do |image| %>
+	    <p>	
+	    	<% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
+				<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name, :size => "350x300" %>
+				<p><%= image.description %></p>									
+			<% end %>	               		               		 		               
+	      <br /> 
+	    </p>
+    <% end %>
+  <% end %>
+
 <% if(@post.user_id != current_user.id)%>
 	<h2>Comments</h2>
 	<%= render @post.comments %>

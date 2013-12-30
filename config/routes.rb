@@ -7,6 +7,8 @@ Ketsie::Application.routes.draw do
   
   resources :followers
   
+  get 'images/image' => 'images#image'
+  
   get "home/index"
   devise_for :users
   root :to => "home#index"

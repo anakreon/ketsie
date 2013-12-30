@@ -17,9 +17,29 @@ class ImagesController < ApplicationController
       :image_data => @file.read
     )        
     if @image.save
-      redirect_to posts
+      redirect_to @post
     else
      render 'new'
+    end
+  end
+  
+    
+  def show
+    @image = Image.find(params[:id])
+  end
+  
+  def image 
+    @image = Image.find(params[:id]) 
+    send_data @image.image_data, :filename => @image.file_name, :type=>@image.file_type
+  end  
+  
+  def destroy
+    @post = current_user.posts.find(params[:post_id])
+    @image = @post.images.find(params[:id])
+    @image.destroy
+    respond_to do |format|
+      format.html { redirect_to edit_post_url(:id => params[:post_id]) }
+      format.json { head :no_content }
     end
   end
   

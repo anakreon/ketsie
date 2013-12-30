@@ -1,0 +1,8 @@
+<% if @image %> 	
+    <p>	
+    	<% if @image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
+			<%= image_tag url_for({:action => 'image', :id=> @image.id, :file_name => @image.file_name}), :alt => @image.file_name, :size => "350x300" %>
+		<% end %>	               		               		 		               
+      <br /> 
+    </p>	
+<% end %>

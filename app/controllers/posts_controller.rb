@@ -26,8 +26,7 @@ class PostsController < ApplicationController
   
   def update
     @post = current_user.posts.find(params[:id])
-   
-    
+       
     if(params[:image])
       @image = @post.images.new(image_params)
       @image.post_id = current_user.id;
@@ -45,6 +44,15 @@ class PostsController < ApplicationController
   
   def show
     @post = current_user.posts.find(params[:id])
+  end
+  
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.json { head :no_content }
+    end
   end
   
   private
