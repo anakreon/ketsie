@@ -1,15 +1,15 @@
 <p>
-  <strong>Commenter:</strong>
+  <strong><%= t 'comments.commenter', scope: :custom %></strong>
   <%= comment.user_id %>
 </p>
  
 <p>
-  <strong>Comment:</strong>
+  <strong><%= t 'comments.comment', scope: :custom %></strong>
   <%= comment.text %>
 </p>
 
 <p>
   <% if(comment.user_id == current_user.id) %>
-  	<%= link_to 'Destroy Comment', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+  	<%= link_to (t 'comments.delete_comment', scope: :custom), [comment.post, comment], method: :delete, data: { confirm: (t 'confirm') } %>
   <% end %>
 </p>

@@ -1,5 +1,5 @@
 <br />
-Your wall:<br />
+<%= (t 'posts.wall', scope: :custom) %>:<br />
 ---------
 
 <table id='table_posts_list'>
@@ -35,7 +35,7 @@ Your wall:<br />
         
         <%= render "post_edit_menu" %>
         
-		<td>Comments</td>
+		<td><%= (t 'posts.comments', scope: :custom) %></td>
 		<td>
 		<%= render post.comments %>
 		</td>	 
@@ -48,4 +48,4 @@ Your wall:<br />
 <br />
 ---------
 <br />
-<%= link_to 'Back', root_path %>
+<%= link_to (t 'back'), root_path %>

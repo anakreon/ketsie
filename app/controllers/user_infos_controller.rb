@@ -12,7 +12,7 @@ class UserInfosController < ApplicationController
   end
   
   def avatar 
-    @user_info = current_user.user_info 
+    @user_info = UserInfo.find(params[:id]) 
     send_data @user_info.avatar_image, :filename => @user_info.file_name, :type => @user_info.file_type
   end  
 

@@ -15,14 +15,16 @@
 	<% end %>
 	
 	<p class="navbar-text pull-right">
+	<%= link_to (t 'layouts.english', scope: :custom), "?locale=en", :class => 'navbar-link' %>
+	<%= link_to (t 'layouts.czech', scope: :custom), "?locale=cs", :class => 'navbar-link' %>//
 	<% if user_signed_in? %>
-	  Logged in as <strong><%= current_user.screenname %> (<%= current_user.email %>)</strong>.
-	  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-	  <%= link_to 'Edit user information', edit_user_info_path(:id => current_user.id), :class => 'navbar-link' %> |
-	  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+	  <%= t 'layouts.logged_in_as', scope: :custom %> <strong><%= current_user.screenname %> (<%= current_user.email %>)</strong>.
+	  <%= link_to (t 'layouts.edit_profile', scope: :custom), edit_user_registration_path, :class => 'navbar-link' %> |
+	  <%= link_to (t 'layouts.edit_user_information', scope: :custom), edit_user_info_path(:id => current_user.id), :class => 'navbar-link' %> |
+	  <%= link_to (t 'layouts.logout', scope: :custom), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 	<% else %>
-	  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-	  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+	  <%= link_to (t 'layouts.sign_up', scope: :custom), new_user_registration_path, :class => 'navbar-link'  %> |
+	  <%= link_to (t 'layouts.login', scope: :custom), new_user_session_path, :class => 'navbar-link'  %>
 	<% end %>
 	
 	<%= yield %>

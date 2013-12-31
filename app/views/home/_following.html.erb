@@ -1,6 +1,6 @@
 <% if !@following.nil? %>
  <% @following.each do |user| %>
-Followed by:
+<%= t 'home.followed_by', scope: :custom %> 
 <br />
     <p>	
     	<%= user.screenname %>      		               		 		               

@@ -1,4 +1,4 @@
-<h1>Editing post</h1>
+<h1><%= (t 'posts.editing', scope: :custom) %></h1>
  
 <%= render "form" %>
 
@@ -7,6 +7,6 @@
 <% end %>
   
 
-<%= link_to 'Add Image', new_post_image_path(@post.id) %>
+<%= link_to (t 'posts.add_image', scope: :custom), new_post_image_path(@post.id) %>
 <br />
-<%= link_to 'Back', posts_path %>
+<%= link_to (t 'back'), posts_path %>

@@ -1,7 +1,7 @@
-<h1>Welcome to Ketsie</h1>
+<h1><%= t 'home.intro', scope: :custom %></h1>
 
 <% if current_user %> 
-   Hello, <%= current_user.email %><br />
+   <%= t 'home.welcome', scope: :custom %>, <%= current_user.email %><br />
    sn: <%= current_user.screenname %><br />                 
 <% end %>
 
@@ -13,8 +13,8 @@
 
 <br />
 
-<%= link_to('Wall', posts_path) %>
+<%= link_to((t 'home.wall', scope: :custom), posts_path) %>
 <br />
-<%= link_to('New post', new_post_path) %>
+<%= link_to((t 'home.new_post', scope: :custom), new_post_path) %>
 <br />
-<%= link_to('Follow', new_follower_path) %>       
+<%= link_to((t 'home.follow', scope: :custom), new_follower_path) %>       

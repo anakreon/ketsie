@@ -1,4 +1,4 @@
-<h1>Editing User Data</h1>
+<h1><%= (t 'user_infos.editing_user_data', scope: :custom) %></h1>
  
  <%= form_for @user_info do |f| %>
   <% if @user_info.errors.any? %>
@@ -17,7 +17,7 @@
   <p>  	 
   	<%= image_tag url_for({:action => 'avatar', :id=> @user_info.id, :filename => @user_info.file_name}), :alt => @user_info.file_name, :size => "350x300" %> 
   </p>
-  	<%= link_to ('delete avatar'), "destroyAvatar", data: { confirm: ('post_confirm') } %>
+  	<%= link_to (t 'user_infos.delete_avatar', scope: :custom), "destroyAvatar", data: { confirm: (t 'confirm') } %>
   <% end %>
  
   <p>
@@ -36,4 +36,4 @@
 <% end %>
 
 <br />
-<%= link_to 'Back', root_path %>
+<%= link_to (t 'back'), root_path %>

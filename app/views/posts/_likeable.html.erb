@@ -1,5 +1,5 @@
 <% if @likeable_reference %>
-	<td><%= link_to ('like'), "posts/like/"+@post.id.to_s %></td>  
+	<td><%= link_to (t 'posts.like', scope: :custom), "posts/like/"+@post.id.to_s %></td>  
 <% else %>
-	<td><%= link_to ('stop liking'), "posts/like/"+@post.id.to_s %></td>
+	<td><%= link_to (t 'posts.unlike', scope: :custom), "posts/like/"+@post.id.to_s %></td>
 <% end %>

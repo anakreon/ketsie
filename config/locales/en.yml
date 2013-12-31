@@ -20,4 +20,82 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  back: "Back"
+  confirm: "Are you sure?"
+  edit: 'Edit'
+  hello: "Hello" 
+  update: 'Update' 
+  custom:
+    comments:
+      comment: 'Comment'
+      commenter: 'Commenter'
+      delete_comment: 'Delete comment'
+    devise:
+      acc_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+      acc_locked2: 'Click the link below to unlock your account'
+      acc_locked3: 'Unlock my account'
+      change_pwd_text: 'Someone has requested a link to change your password. You can do this through the link below.'
+      change_pwd_text2: 'Change my password'
+      change_pwd_text3: "If you didn't request this, please ignore this email."
+      change_pwd_text4: "Your password won't change until you access the link above and create a new one."
+      confirm_account: 'Confirm my account'
+      edit_reg: 'Edit'
+      edit_reg2: 'Currently waiting confirmation for'
+      edit_reg3: "(leave blank if you don't want to change it)"
+      edit_reg4: '(we need your current password to confirm your changes)'
+      edit_reg5: 'Cancel my account'
+      email_confirm: 'You can confirm your account email through the link below'
+      forgot_password: 'Forgot your password?'
+      forgot_password2: "Send me reset password instructions"
+      login: 'Sign in'
+      new_reg: "Sign up"
+      pwd_edit: 'Change your password'
+      pwd_edit2: 'Confirm your password'
+      pwd_edit3: 'Change my password'
+      resend_confirmation_instructions: 'Resend confirmation instructions'
+      resend: 'Resend unlock instructions'
+      shared: "Didn't receive confirmation instructions?"
+      shared2: "Didn't receive unlock instructions?"
+      shared3: 'Sign in with'
+    followers:
+      add_link: 'Add link'
+    home:           
+      follow: 'Follow'
+      followed_by: 'Followed by:'
+      following: 'Following'
+      intro: 'Welcome to Ketsie'
+      new_post: 'New Post'
+      unfollow: 'Unfollow'
+      unfollow_confirm: 'Really unfollow?'
+      wall: 'Wall'
+      welcome: 'Welcome'        
+    images:
+      delete_image: 'Delete image'
+    layouts:
+      czech: 'Czech'
+      edit_profile: 'Edit profile'
+      edit_user_information: 'Edit user information'
+      english: 'English'      
+      logged_in_as: 'Logged in as'
+      login: 'Login'
+      logout: 'Logout'
+      sign_up: 'Sign up'
+    posts:
+      add_comment: 'Add comment'
+      add_image: 'Add image'
+      author: 'Author'
+      avatar: 'Avatar'
+      comments: 'Comments'
+      delete: 'Delete post'
+      edit: 'Edit post'
+      editing: 'Editing post'
+      like: 'Like'
+      liked_by: 'Liked by'
+      show: 'Show post'
+      text: 'Text'
+      unlike: 'Unlike'
+      user_id: 'User ID'
+      wall: 'Your wall'
+    user_infos:
+      delete_avatar: 'Delete avatar'
+      editing_user_data: 'Editing user data'

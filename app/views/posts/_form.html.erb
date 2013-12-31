@@ -12,7 +12,7 @@
   <% end %>  
 
   <p>
-    Post from<br>
+    <%= (t 'posts.author', scope: :custom) %><br>
     <%= current_user.screenname %>
   </p>
  
