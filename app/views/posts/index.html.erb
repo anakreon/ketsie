@@ -10,41 +10,30 @@ Your wall:<br />
 
   <tbody>  	
     <% @posts.each do |post| %>
-      <tr>
+      <tr>      	
+      	<td><% @user_info = post.user.user_info %>
+      		<%= render "user_infos/show_avatar" %> </td>
       	<td><%= post.user.screenname %> </td>
       	<td><%= post.updated_at %></td>
         <td class='wide'>
         <%= raw post.text %>        	
         </td>
+        <% @post = post %>
         <td class>
         	<% if post.images %> 
-        		<% post.images.each do |image| %>
-		            <p>	
-		            	<% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
-        					<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name, :size => "350x300" %>
-    					<% end %>	               		               		 		               
-		              <br /> 
-		            </p>
-            	<% end %>
+        		<% @images = post.images %> 
+        		
+        		<%= render "images/images_show" %>
+        		
         	<% end %></td>
-        	
-       	<% if @liked_by[post.id] %>
-        	<td>Liked by: 
-        		<% @liked_by[post.id].each do |user| %>
-        		<%= user.screenname+" " %>
-        		<% end %>
-        	</td>  
-        <% end %>
-        <% if @likeable[post.id] %>
-        	<td><%= link_to ('like'), "posts/like/"+post.id.to_s %></td>  
-        <% else %>
-        	<td><%= link_to ('stop liking'), "posts/like/"+post.id.to_s %></td>
-        <% end %>
-        <td><%= link_to ('text_show'), post %></td>     
-        <% if post.user_id == current_user.id %>        	 
-	        <td><%= link_to ('text_edit'), edit_post_path(post) %></td>
-	        <td><%= link_to ('text_destroy'), post, method: :delete, data: { confirm: ('post_confirm') } %></td>
-        <% end %>
+        
+        <% @liked_by_reference = @liked_by[post.id] %>	
+        <%= render "liked_by" %>
+       
+        <% @likeable_reference = @likeable[post.id] %>       
+        <%= render "likeable" %>
+        
+        <%= render "post_edit_menu" %>
         
 		<td>Comments</td>
 		<td>

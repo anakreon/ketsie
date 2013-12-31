@@ -1,5 +1,7 @@
 class FollowersController < ApplicationController
+ 
   before_action :authenticate_user!
+ 
   def new
     @users = User.all
     @ids = Array.new

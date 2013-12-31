@@ -1,0 +1,28 @@
+<%= form_for @image, url: {action: "create"} do |f| %>
+  <% if @image.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@image.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @image.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>  
+  
+  
+  <div class="field"> 
+  	<%= f.label :image_data %> 
+  	<%= f.file_field :image_data %> 
+  </div>
+  
+  <div> 
+  	<%= f.label :description %> 
+  	<%= f.text_area :description %> 
+  </div>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

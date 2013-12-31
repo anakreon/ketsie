@@ -1,16 +1,17 @@
 class PostsController < ApplicationController
+ 
   before_action :authenticate_user!
  
   def index
     @posts = current_user.posts.all
-    @followed_users = current_user.followed_users.all
-    #@followed_posts = Array.new 
+    
+    @followed_users = current_user.followed_users.all    
     @followed_users.each do |user|
-      user.posts.each do |post|
-        #@followed_posts.push(post)
+      user.posts.each do |post|        
         @posts.push(post)
       end
     end
+    
     @posts.sort! { |a,b| b.updated_at <=> a.updated_at }
     @likeable = Hash.new
     @liked_by = Hash.new
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post
     else
-     render 'new'
+      render 'new'
     end
   end
   

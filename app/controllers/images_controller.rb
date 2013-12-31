@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  
   before_action :authenticate_user!
   
   def new
@@ -20,10 +21,9 @@ class ImagesController < ApplicationController
     if @image.save
       redirect_to @post
     else
-     render 'new'
+      render 'new'
     end
-  end
-  
+  end  
     
   def show
     @image = Image.find(params[:id])
@@ -42,12 +42,6 @@ class ImagesController < ApplicationController
       format.html { redirect_to edit_post_url(:id => params[:post_id]) }
       format.json { head :no_content }
     end
-  end
-  
-  private
-  
-  def image_params
-    params.require(:image).permit(:image_data, :description)
   end
   
 end

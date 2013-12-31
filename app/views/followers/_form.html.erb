@@ -1,0 +1,32 @@
+<%= form_for @follow, url: {action: "create"} do |f| %>
+  <% if @follow.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@follow.errors.count, "error") %> prohibited
+      this following from being saved:</h2>
+    <ul>
+    <% @follow.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>  
+
+  <p>
+    Add link:<br>
+  </p>
+  
+  </p>  
+    <%= f.label :following_user %><br>
+    <%= f.text_area :following_user, :value => current_user.id, disabled: 'disabled' %>
+  </p>
+  
+  <p>  
+    <%= f.label :id %><br>
+    <%= f.select :id, @ids %>
+           
+  </p>
+     
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,10 @@
+<% if !@followed.nil? %>
+ <% @followed.each do |user| %>
+Following:
+<br />
+    <p>	
+    	<%= user.screenname %> <%= link_to ('Unfollow'), "followers/"+user.id.to_s, method: :delete, data: { confirm: ('post_confirm') } %>         
+      <br /> 
+    </p>
+ <% end %>
+<% end %>

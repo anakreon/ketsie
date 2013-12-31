@@ -5,27 +5,9 @@
    sn: <%= current_user.screenname %><br />                 
 <% end %>
 
-<% if !@followed.nil? %>
- <% @followed.each do |user| %>
-Following:
-<br />
-    <p>	
-    	<%= user.screenname %> <%= link_to ('Unfollow'), "followers/"+user.id.to_s, method: :delete, data: { confirm: ('post_confirm') } %>         
-      <br /> 
-    </p>
- <% end %>
-<% end %>
+<%= render "followed" %>
 
-<% if !@following.nil? %>
- <% @following.each do |user| %>
-Followed by:
-<br />
-    <p>	
-    	<%= user.screenname %>      		               		 		               
-      <br /> 
-    </p>
- <% end %>
-<% end %>
+<%= render "following" %>
 
 <br />
 

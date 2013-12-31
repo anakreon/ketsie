@@ -1,46 +1,11 @@
 <h1>Editing post</h1>
  
- <%= form_for @post do |f| %>
-  <% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@post.errors.count, "error") %> prohibited
-      this post from being saved:</h2>
-    <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>  
-  
- <p>
-    Post from<br>
-    <%= current_user.screenname %>
-  </p>
- 
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
-  
-  <% if @images %>
-    <% @images.each do |image| %>
-	    <p>	
-	    	<% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
-				<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name, :size => "350x300" %>
-				<p><%= image.description %></p>					
-				<%= link_to ('delete image'), "images/"+image.id.to_s, method: :delete, data: { confirm: ('post_confirm') } %>
-			<% end %>	               		               		 		               
-	      <br /> 
-	    </p>
-    <% end %>
-  <% end %>
-  
+<%= render "form" %>
 
-  <p>
-    <%= f.submit %>
-  </p>
+<% if @images %>
+  <%= render "images/images_show" %>
 <% end %>
+  
 
 <%= link_to 'Add Image', new_post_image_path(@post.id) %>
 <br />

@@ -1,4 +1,10 @@
 <p>
+  <strong>Avatar:</strong>
+  <% @user_info = @post.user.user_info %>
+  <%= render "user_infos/show_avatar" %>
+</p>
+
+<p>
   <strong>User_ID:</strong>
   <%= @post.user_id %>
 </p>
@@ -9,15 +15,8 @@
 </p>
 
 <% if @post.images %>
-    <% @post.images.each do |image| %>
-	    <p>	
-	    	<% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
-				<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name, :size => "350x300" %>
-				<p><%= image.description %></p>									
-			<% end %>	               		               		 		               
-	      <br /> 
-	    </p>
-    <% end %>
+	<% @images = @post.images %>
+    <%= render "images/images_show" %>
   <% end %>
 
 	<h2>Comments</h2>

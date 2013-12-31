@@ -1,4 +1,7 @@
 class UserInfosController < ApplicationController
+ 
+  before_action :authenticate_user!
+  
   def edit
     @user = current_user
     @user_info = current_user.user_info
@@ -26,7 +29,7 @@ class UserInfosController < ApplicationController
     if @user_info.save
       redirect_to root_url
     else
-     render 'edit'
+      render 'edit'
     end
   end
   
@@ -41,10 +44,5 @@ class UserInfosController < ApplicationController
      render 'edit'
     end
   end
-  
-  private
-    def user_info_params
-      params.require(:user_info).permit(:personal_description, :avatar_image)
-    end
   
 end

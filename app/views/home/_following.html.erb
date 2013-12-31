@@ -1,0 +1,10 @@
+<% if !@following.nil? %>
+ <% @following.each do |user| %>
+Followed by:
+<br />
+    <p>	
+    	<%= user.screenname %>      		               		 		               
+      <br /> 
+    </p>
+ <% end %>
+<% end %>
