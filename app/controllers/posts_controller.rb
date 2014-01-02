@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
  
   before_action :authenticate_user!
+  
+  include PostsHelper
  
   def index
     @posts = current_user.posts.all
@@ -49,15 +51,19 @@ class PostsController < ApplicationController
   
   def like
     @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
+    @response_text = ""
     if(@like)
-      @like.destroy
+      @like.destroy      
+      @response_text = get_like_text();
     else
       @like = Like.new
       @like.post_id = params[:post_id]
       @like.user_id = current_user.id
-      @like.save
+      if @like.save then @response_text = get_unlike_text() end
     end
-    redirect_to posts_url
+    respond_to do |format|
+      format.json { render :json => {"op_type"=>"like", "post_id"=>params[:post_id], "response_text"=>@response_text} }      
+    end   
   end
   
   def update

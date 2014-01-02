@@ -2,11 +2,12 @@
 <html>
 <head>
   <title>Ketsie - Spread your word!</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>  
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>	
+	<div id='test'>&nbsp;</div>
 	<% if notice %>
 	  <p class="alert alert-notice"><%= notice %></p>
 	<% end %>
