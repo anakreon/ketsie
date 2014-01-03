@@ -1,6 +1,6 @@
 
-<td><%= link_to (t 'posts.show', scope: :custom), @post %></td>     
-<% if @post.user_id == current_user.id %>        	 
-    <td><%= link_to (t 'posts.edit', scope: :custom), edit_post_path(@post) %></td>
-    <td><%= link_to (t 'posts.delete', scope: :custom), @post, method: :delete, data: { confirm: (t 'confirm') } %></td>
+<!--<%= link_to (t 'posts.show', scope: :custom), post %>  -->
+<% if post.user_id == current_user.id %>        	 
+<%= link_to (t 'posts.edit', scope: :custom), edit_post_path(post) %>
+<%= link_to (t 'posts.delete', scope: :custom), post, method: :delete, data: { confirm: (t 'confirm') } %>
 <% end %>

@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.text = params[:comment][:text]    
     if @comment.save
-      redirect_to @post
+      redirect_to root_url
     else
       redirect_to root_url
     end    
@@ -19,8 +19,15 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to post_url(:id => params[:post_id]) }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def index
+    @post = Post.find(params[:post_id])
+    respond_to do |format|
+      format.html { render @post.comments }      
     end
   end
   

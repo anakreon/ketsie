@@ -19,7 +19,7 @@ class ImagesController < ApplicationController
       :image_data => @file.read
     )        
     if @image.save
-      redirect_to @post
+      redirect_to root_url
     else
       render 'new'
     end
@@ -39,8 +39,15 @@ class ImagesController < ApplicationController
     @image = @post.images.find(params[:id])
     @image.destroy
     respond_to do |format|
-      format.html { redirect_to edit_post_url(:id => params[:post_id]) }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def index
+    @post = Post.find(params[:post_id])
+    respond_to do |format|
+      format.html { render @post.images }      
     end
   end
   

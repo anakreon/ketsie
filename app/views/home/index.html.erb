@@ -1,20 +1,14 @@
-<h1><%= t 'home.intro', scope: :custom %></h1>
-
-<% if current_user %> 
-   <%= t 'home.welcome', scope: :custom %>, <%= current_user.email %><br />
-   sn: <%= current_user.screenname %><br />                 
+<% content_for :images_section do %>
 <% end %>
 
-<%= render "followed" %>
+<% content_for :comments_section do %>
+<% end %>
 
-<%= render "following" %>
+<% content_for :posts_section do %>
+	<%= render "posts/form" %>
+	<%= render @posts %>
+<% end %>
 
-<br />
 
-<br />
+<%= render template: "layouts/main_panels" %>
 
-<%= link_to((t 'home.wall', scope: :custom), posts_path) %>
-<br />
-<%= link_to((t 'home.new_post', scope: :custom), new_post_path) %>
-<br />
-<%= link_to((t 'home.follow', scope: :custom), new_follower_path) %>       

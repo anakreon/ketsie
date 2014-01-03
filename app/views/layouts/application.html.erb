@@ -2,19 +2,14 @@
 <html>
 <head>
   <title>Ketsie - Spread your word!</title>
+  <%= favicon_link_tag 'k_logo.ico' %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>  
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>  
   <%= csrf_meta_tags %>
 </head>
-<body>	
-	<div id='test'>&nbsp;</div>
-	<% if notice %>
-	  <p class="alert alert-notice"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-	  <p class="alert alert-error"><%= alert %></p>
-	<% end %>
+<body class="<%= "#{params[:controller]}_#{params[:action]}" %>">	
 	
+<!-- 	
 	<p class="navbar-text pull-right">
 	<%= link_to (t 'layouts.english', scope: :custom), "?locale=en", :class => 'navbar-link' %>
 	<%= link_to (t 'layouts.czech', scope: :custom), "?locale=cs", :class => 'navbar-link' %>//
@@ -27,8 +22,18 @@
 	  <%= link_to (t 'layouts.sign_up', scope: :custom), new_user_registration_path, :class => 'navbar-link'  %> |
 	  <%= link_to (t 'layouts.login', scope: :custom), new_user_session_path, :class => 'navbar-link'  %>
 	<% end %>
+	</p>
+-->	
 	
-	<%= yield %>
-
+	<div id="main_content">
+		<% if notice %>
+		  <p class="alert alert-notice"><%= notice %></p>
+		<% end %>
+		<% if alert %>
+		  <p class="alert alert-error"><%= alert %></p>
+		<% end %>
+		<%= yield %>
+	</div>
+	<%= render "layouts/header" %>	
 </body>
 </html>

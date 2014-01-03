@@ -1,7 +1,7 @@
-	<% if @liked_by_reference %>
-    	<td><%= (t 'posts.liked_by', scope: :custom) %>:
-    		<% @liked_by_reference.each do |user| %>
-    		<%= user.screenname+" " %>
-    		<% end %>
-    	</td>  
-    <% end %>
+<% if liked_by_reference %>
+	<td><%= (t 'posts.liked_by', scope: :custom) %>:
+		<% liked_by_reference.each do |user| %>
+		<%= user.screenname+" " %>
+		<% end %>
+	</td>  
+<% end %>

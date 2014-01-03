@@ -1,5 +1,5 @@
-<% if (!@user_info.nil?)&&(!@user_info.file_type.nil?)&&(!@user_info.file_name.nil?)&&(@user_info.file_type.length > 0) %>
-	<% if @user_info.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
-		<%= image_tag url_for({:controller => "user_infos", :action => 'avatar', :id=> @user_info.id, :filename => @user_info.file_name}), :alt => @user_info.file_name, :size => "350x300" %> 								
+<% if (!user_info.nil?)&&(!user_info.file_type.nil?)&&(!user_info.file_name.nil?)&&(user_info.file_type.length > 0) %>
+	<% if user_info.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
+		<%= image_tag url_for({:controller => "user_infos", :action => 'avatar', :id=> user_info.id, :filename => user_info.file_name}), :alt => user_info.file_name %> 								
 	<% end %>	
 <% end %>
