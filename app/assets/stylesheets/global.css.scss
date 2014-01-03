@@ -1,0 +1,111 @@
+$main-color: #1E7B12;
+$main-bg-color: #C3FFB4;
+$header-bg-color: #8BEA73;
+$left-margin: 100px;
+$min-app-height: 300px;
+$header-height: 70px;
+//$max-app-height: 600px;
+
+$app-width: 1000px;
+$left-width: 250px;
+$right-width: 250px;
+
+@media (max-width: $app-width+$left-margin*2) {
+  #main_content {
+    margin-left: 0px;
+  }
+  
+  header{
+    padding-left:0px;
+  }
+}
+
+@media (min-width: $app-width+$left-margin*2){
+  #main_content {
+    margin-left: $left-margin;
+  }
+  
+  header{
+    padding-left: $left-margin;
+  }
+}
+
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin positioning($bgcolor){
+  border: 0px black solid;
+  background-color:$bgcolor;
+}
+
+body{
+  margin: 0px;
+}
+
+header{  
+  background-color:$header-bg-color;
+  position:fixed;
+  height: $header-height;
+  width: 100%;  
+  #main_logo{
+    margin-top:10px;
+    margin-left:10px;
+    float:left;
+    width:267px;
+    height:50px;
+    background-image: image-url("ketsie_logo.png");
+  }
+}
+
+
+ 
+#images_section{
+  min-height: $min-app-height;
+  float: left;
+  width: $left-width;
+  display: inline;
+}
+
+#images_fixed{
+  position: fixed;
+  top: $header-height;
+}
+
+#posts_section{
+  min-height: $min-app-height;
+  float: left;
+  width: $app-width - ($left-width + $right-width);
+  /*overflow-y:scroll;
+  max-height: $max-app-height;  */
+  
+}
+
+#comments_section{
+  min-height: $min-app-height;
+  float: right;
+  width: $right-width;
+  display: inline;
+}
+
+#comments_fixed{
+  position: fixed;
+  top: $header-height;
+}
+
+
+#main_content{
+  background-color: $main-bg-color;
+  position:relative;
+  top: $header-height;
+  float: left;
+  width: $app-width;
+  max-width: $app-width;
+  min-height: $min-app-height;  
+}
+
+#main_content section{
+  margin:0px;
+}

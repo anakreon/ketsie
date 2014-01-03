@@ -1,0 +1,15 @@
+<div class='post' post_id='<%= post.id %>'>
+	<%= render partial: "user_infos/show_avatar", locals:{user_info: post.user.user_info} %><br />
+	<%= post.user.screenname %><br />
+	<%= post.updated_at %><br />
+	<%= raw post.text %><br />
+	    	
+	<%= render partial: "posts/liked_by", locals:{liked_by_reference: @liked_by[post.id]} %>
+	   
+	<%= render partial: "posts/likeable", locals:{likeable_reference: @likeable[post.id], post: post}  %>
+	
+	<%= render partial: "posts/post_edit_menu", locals:{post: post} %>
+	
+	<%= (t 'posts.add_comment', scope: :custom) %>:
+	<%= render partial: "comments/form", locals:{post: post} %>
+</div>
