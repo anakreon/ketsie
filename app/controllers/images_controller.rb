@@ -47,7 +47,7 @@ class ImagesController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     respond_to do |format|
-      format.html { render @post.images }      
+      format.html { render partial: 'images' }      
     end
   end
   

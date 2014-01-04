@@ -1,3 +1,37 @@
-// Place all the styles related to the Comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$comment-avatar-size: 48px;
+
+.comment{
+  
+  font-family: "Latin Modern Sans 10 Bold Oblique", Arial;
+  font-size: 11pt;
+  .comment_header{
+    height: $comment-avatar-size + 5px;
+  }
+  .comment_avatar{
+    float:left;
+    
+    img{
+      width: $comment-avatar-size;
+      height: $comment-avatar-size;
+    }
+  }
+  
+  .comment_commenter{
+    padding-top: 5px;       
+    margin-left: $comment-avatar-size + 10px;
+    font-weight: bold;
+  }
+  
+  .comment_datetime{  
+    margin-top:5px;  
+    margin-left: $comment-avatar-size + 10px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #585858;
+  }
+  
+  .comment_text{
+    
+  }
+  
+}

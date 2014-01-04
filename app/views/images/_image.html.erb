@@ -1,5 +1,7 @@
 <% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
-	<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name%>
-	<p><%= image.description %></p>							
-	<%= link_to (t 'images.delete_image', scope: :custom), "images/"+image.id.to_s, method: :delete, data: { confirm: (t 'confirm') } if (!@post.nil?) && (@post.user_id == current_user.id) %>
+	<div class='image_preview'>
+		<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name%>
+		<p style='display:none;'><%= image.description %></p>							
+		<!-- <%= link_to (t 'images.delete_image', scope: :custom), "images/"+image.id.to_s, method: :delete, data: { confirm: (t 'confirm') } if (!@post.nil?) && (@post.user_id == current_user.id) %> -->
+	</div>
 <% end %>	               		               		 		               

@@ -1,15 +1,20 @@
-<p>
-  <strong><%= t 'comments.commenter', scope: :custom %></strong>
-  <%= comment.user_id %>
-</p>
- 
-<p>
-  <strong><%= t 'comments.comment', scope: :custom %></strong>
-  <%= comment.text %>
-</p>
+<div class='comment'>
+  <div class='comment_header'>
+	  <div class='comment_avatar'>
+	  	<%= render partial: "user_infos/show_avatar", locals:{user_info: comment.user.user_info} %><br />
+	  </div>
+	  <div class='comment_commenter'>
+	  	<%= comment.user.screenname %>	
+	  </div>
+	  <div class='comment_datetime'>  	
+		<%= l comment.updated_at, :format => :default %>	
+	  </div>
+  </div>
+  <div class='comment_text'>  
+  	<%= comment.text %>
+  </div>
 
-<p>
-  <% if(comment.user_id == current_user.id) %>
+  <!--<% if(comment.user_id == current_user.id) %>
   	<%= link_to (t 'comments.delete_comment', scope: :custom), [comment.post, comment], method: :delete, data: { confirm: (t 'confirm') } %>
-  <% end %>
-</p>
+  <% end %> -->
+</div>
