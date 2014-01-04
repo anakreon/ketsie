@@ -1,15 +1,23 @@
 <header>
-	<div id='main_logo'></div>
-	<span><%= search_field(:post, :text) %></span>
-	<% if user_signed_in? %>
-		<span>		
-			<%= @current_user.screenname %>
-		</span>
-		<span>					
-  			<%= render partial: "user_infos/show_avatar", locals: {user_info: @current_user.user_info } %>
-		</span>
-		<span>	
-			<%= link_to (t 'layouts.logout', scope: :custom), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-		</span>
-	<% end %>
+	<div id='header_wrapper'>
+		<section id='main_logo'></section>
+		<section id='search_field'>
+			<span><%= search_field(:post, :search) %></span><span><%= search_field(:fake, :bg)%></span>
+		</section>
+		<section id='top_menu'>
+			<% if user_signed_in? %>
+				<ul id='ul_top_menu'>
+					<li id='currentuser_screenname'>		
+						<%= @current_user.screenname %>
+					</li>
+					<li id='currentuser_avatar'>					
+			  			<%= render partial: "user_infos/show_avatar", locals: {user_info: @current_user.user_info } %>
+					</li>
+				</ul>
+				<!--<span>	
+					<%= link_to (t 'layouts.logout', scope: :custom), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+				</span> -->
+			<% end %>
+		</section>
+	</div>
 </header>

@@ -50,51 +50,66 @@ header{
   position:fixed;
   height: $header-height;
   width: 100%;  
-  #main_logo{
-    margin-top:10px;
-    margin-left:10px;
-    float:left;
-    width:267px;
-    height:50px;
-    background-image: image-url("ketsie_logo.png");
+  #header_wrapper{
+    width:$app-width;
+    #main_logo{
+      margin-top:10px;
+      margin-left:10px;
+      float:left;
+      width:267px;
+      height:50px;
+      background-image: image-url("ketsie_logo.png");
+    }
+    #search_field{
+      float:left;
+      margin-top:30px;
+      margin-left:30px;
+      
+      input#post_search{
+        height: 26px;
+        width: 350px;
+        padding-right:0px;
+        border-right:0px;
+      }
+      input#fake_bg{
+        background-image: image-url("zoom.png");
+        border: 0px;
+        padding: 0px;
+        height: 26px;
+        width: 26px;
+      }
+    }
+    #top_menu{     
+      float:right;
+      margin-top:12px;
+      margin-right:10px;      
+      height: $header-height;
+      #currentuser_screenname{
+        margin-top:15px;
+        margin-right: 25px;            
+        display:inline-block;
+        vertical-align:middle;       
+        font-family: "Latin Modern Sans 10 Bold Oblique", Arial;
+        font-weight: bold;
+        color: #008000;
+      }
+      #currentuser_avatar{                
+        display:inline-block;
+        vertical-align:middle;
+        img{                    
+          width: 48px;
+          height:48px;
+        }
+      }
+    }
   }
 }
 
-
- 
-#images_section{
-  min-height: $min-app-height;
-  float: left;
-  width: $left-width;
-  display: inline;
+ul{
+  list-style-type:none;
+  padding: 0px;
+  margin: 0px;
 }
-
-#images_fixed{
-  position: fixed;
-  top: $header-height;
-}
-
-#posts_section{
-  min-height: $min-app-height;
-  float: left;
-  width: $app-width - ($left-width + $right-width);
-  /*overflow-y:scroll;
-  max-height: $max-app-height;  */
-  
-}
-
-#comments_section{
-  min-height: $min-app-height;
-  float: right;
-  width: $right-width;
-  display: inline;
-}
-
-#comments_fixed{
-  position: fixed;
-  top: $header-height;
-}
-
 
 #main_content{
   background-color: $main-bg-color;
@@ -103,9 +118,40 @@ header{
   float: left;
   width: $app-width;
   max-width: $app-width;
-  min-height: $min-app-height;  
-}
-
-#main_content section{
-  margin:0px;
+  min-height: $min-app-height; 
+  
+  section{
+    margin:0px;
+  } 
+ 
+  #images_section{
+    min-height: $min-app-height;
+    float: left;
+    width: $left-width;
+    display: inline;
+    #images_fixed{
+      position: fixed;
+      top: $header-height;
+    }
+  }
+ 
+  #posts_section{
+    min-height: $min-app-height;
+    float: left;
+    width: $app-width - ($left-width + $right-width);
+    /*overflow-y:scroll;
+    max-height: $max-app-height;  */
+    
+  }
+  
+  #comments_section{
+    min-height: $min-app-height;
+    float: right;
+    width: $right-width;
+    display: inline;
+    #comments_fixed{
+      position: fixed;
+      top: $header-height;
+    }
+  }
 }
