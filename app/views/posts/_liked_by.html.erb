@@ -1,7 +1,8 @@
-<% if liked_by_reference %>
-	<td><%= (t 'posts.liked_by', scope: :custom) %>:
-		<% liked_by_reference.each do |user| %>
+<% if liked_by_reference && ! liked_by_reference.empty? %>
+	<%= (t 'posts.liked_by', scope: :custom) %>:
+	<% liked_by_reference.each do |user| %>
 		<%= user.screenname+" " %>
-		<% end %>
-	</td>  
+	<% end %>
+<% else %>
+	<%= 'Be first to like!' %>	  
 <% end %>

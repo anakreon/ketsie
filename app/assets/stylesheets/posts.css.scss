@@ -1,4 +1,97 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$post-avatar-size: 48px;
+$main-color: #008000;
 
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+.post{
+  font-family: "Latin Modern Sans 10 Bold Oblique", Arial;
+  font-size: 11pt;
+  .post_header{
+    height: $post-avatar-size + 5px;
+  }  
+  
+  .post_user_avatar{
+     float:left;
+     img{
+       width: $post-avatar-size;
+       height: $post-avatar-size;
+     }
+  }
+  
+  .post_screenname{
+    padding-top: 5px;       
+    margin-left: $post-avatar-size + 10px;
+    font-weight: bold;
+  }
+  
+  .post_datetime{  
+    margin-top:5px;  
+    margin-left: $post-avatar-size + 10px;
+    font-size: 9pt;
+    font-style: italic;
+    color: #585858;
+  }
+  
+  .post_text{
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .post_likeable{
+    float:left;
+    color: $main-color;
+    font-weight: bold;
+    font-size: 10pt;
+    margin-right: 10px;
+  }
+  
+  .post_liked_by{
+    color: $main-color;    
+    font-size: 10pt;
+    margin-right: 10px;
+  }
+  
+  .post_add_comment{
+    margin-top:10px;    
+  }
+  
+  .post_comment_avatar{
+     margin-top:1px;
+     float:left;
+     width: $post-avatar-size/1.7;
+     height: $post-avatar-size/1.7;
+     img{
+       width: $post-avatar-size/1.7;
+       height: $post-avatar-size/1.7;
+     }
+  }
+  .post_comment_text{
+    display:inline-block;
+    textarea{
+      padding:5px;
+      border: 1px solid darkgrey;
+      resize: none;
+      overflow: hidden;
+      height: 28px;
+      &:focus{
+          outline: none !important;
+          border:1px solid #8BEA73;
+          box-shadow: 0 0 10px #8BEA73;
+        }
+    }
+    
+  }
+  .post_comment_submit{
+    float:right;
+    margin-top: 5px;
+    input{
+      width: $post-avatar-size/2;
+      height: $post-avatar-size/2;
+    }
+  }    
+  
+}

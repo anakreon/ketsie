@@ -14,6 +14,15 @@ Posts.handlers = (function(){
 			  type: "GET",
 			  url: '/posts/'+$(post_div).attr('post_id')+'/images'
 			});
+		},
+		new_post_blur: function(event){
+			if($('#post_text').val() == "") Posts.output.new_post_default_text();
+		},
+		new_post_text: function(){
+			if($('#post_text').val() == "Spread your word..."){
+				$('#post_text').val('');
+				$('#post_text').css('color','black');
+			}
 		}
 	};
 })();
@@ -26,6 +35,18 @@ Posts.output = (function(){
 		},
 		post_lightmark: function(post_div){
 			$(post_div).css('background-color','lightred');
+		},
+		new_post_resize: function(){
+			$('#post_text').css('height','auto');
+			$('#post_text').css('height',$('#post_text')[0].scrollHeight);        	
+		},
+		new_post_default_text: function(){
+			$('#post_text').val('Spread your word...');
+			$('#post_text').css('color','darkgrey');
+		},
+		post_comment_resize: function(text_element){
+			text_element.css('height','auto');
+			text_element.css('height',text_element[0].scrollHeight);        	
 		}
 	};
 })();
@@ -35,6 +56,6 @@ Posts.helpers = (function(){
 		load_first_post_data: function(){
 			var first_post = $('div.post').first();
 			if(first_post) Posts.handlers.post_images_comments_handler(first_post[0]);
-		}		
+		}
 	};	
 })();

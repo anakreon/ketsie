@@ -9,7 +9,9 @@ $comment-avatar-size: 48px;
   }
   .comment_avatar{
     float:left;
-    
+    width: $comment-avatar-size;
+    height: $comment-avatar-size;
+ 
     img{
       width: $comment-avatar-size;
       height: $comment-avatar-size;
@@ -31,7 +33,7 @@ $comment-avatar-size: 48px;
   }
   
   .comment_text{
-    
+    margin-top:0px;  
   }
   
 }

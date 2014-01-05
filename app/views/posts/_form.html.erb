@@ -1,27 +1,26 @@
-<%= form_for @new_post do |f| %>
-  <% if @new_post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@new_post.errors.count, "error") %> prohibited
-      this post from being saved:</h2>
-    <ul>
-    <% @new_post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>  
-
-  <p>
-    <%= (t 'posts.author', scope: :custom) %><br>
-    <%= current_user.screenname %>
-  </p>
- 
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
-  
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class='new_post'>
+	<%= form_for @new_post do |f| %>
+	  <div class='new_post_text'>	   
+	    <%= f.text_area :text %>
+	  </div>
+	  <div class='new_image'>
+	  	<%= image_tag "green_photo.png", :alt => "new_image" %>
+	  </div>
+	  <div class='new_post_submit'>
+	  	 <%= f.submit %>
+	  </div>	  
+	   
+	  <% if @new_post.errors.any? %>
+		  <div id="error_explanation">
+		    <h2><%= pluralize(@new_post.errors.count, "error") %> prohibited
+		      this post from being saved:</h2>
+		    <ul>
+		    <% @new_post.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+	  <% end %>  
+	  
+	<% end %>
+</div>
