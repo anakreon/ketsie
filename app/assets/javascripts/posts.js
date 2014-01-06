@@ -23,6 +23,13 @@ Posts.handlers = (function(){
 				$('#post_text').val('');
 				$('#post_text').css('color','black');
 			}
+		},
+		post_menu: function(event){
+			Posts.output.post_menu();
+			event.stopPropagation();
+		},
+		hide_menu: function(event){
+			Posts.output.hide_menu();
 		}
 	};
 })();
@@ -47,6 +54,12 @@ Posts.output = (function(){
 		post_comment_resize: function(text_element){
 			text_element.css('height','auto');
 			text_element.css('height',text_element[0].scrollHeight);        	
+		},
+		post_menu: function(post_menu){			
+			$('.post_menu_menu').first().css('display','block');			
+		},
+		hide_menu: function(){			
+			$('.post_menu_menu').css('display','none');
 		}
 	};
 })();

@@ -47,6 +47,10 @@ $right-width: 250px;
   background-color:$bgcolor;
 }
 
+.link{
+  cursor: pointer;
+}
+
 a{
   color: inherit;
   text-decoration: none;
@@ -225,10 +229,7 @@ ul{
       margin-bottom: 5px;
       padding: 10px;
       background-color: $main-bg-color;
-      @include rounded-corners(5px);
-      .post_user_avatar img{
-        @include avatar_size();
-      }
+      @include rounded-corners(5px);      
       .post_comment_text textarea{
         width: $app-width - ($left-width + $right-width) - 100px;        
       }

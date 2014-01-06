@@ -3,11 +3,19 @@
 		<div class='post_user_avatar'>
 			<%= render partial: "user_infos/show_avatar", locals:{user_info: post.user.user_info} %>
 		</div>
-		<div class='post_screenname'>
-			<%= post.user.screenname %>			
+		<div class='post_name_time'>
+			<div class='post_screenname'>
+				<%= post.user.screenname %>			
+			</div>
+			<div class='post_datetime'>
+				<%= l post.updated_at, :format => :default %>				
+			</div>
 		</div>
-		<div class='post_datetime'>
-			<%= l post.updated_at, :format => :default %>				
+		<div class='post_menu'>
+			<%= image_tag "post_menu.png", :alt => "post_menu", :class => 'link' %>
+			<div class='post_menu_menu'>
+				<ul><li>edit</li><li>delete</li></ul>
+			</div>
 		</div>
 	</div>
 	<div class='post_text'>

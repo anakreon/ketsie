@@ -1,4 +1,4 @@
-$post-avatar-size: 48px;
+$post-avatar-size: 40px;
 $main-color: #008000;
 
 @mixin rounded-corners($radius) {
@@ -22,18 +22,33 @@ $main-color: #008000;
      }
   }
   
-  .post_screenname{
-    padding-top: 5px;       
-    margin-left: $post-avatar-size + 10px;
-    font-weight: bold;
-  }
+  .post_name_time{
+    padding-top:2px;     
+    margin-left: 10px;
+    float:left;
+    .post_screenname{                   
+      font-weight: bold;
+    }    
+    .post_datetime{  
+      margin-top:5px;       
+      font-size: 9pt;
+      font-style: italic;
+      color: #585858;
+    }  
+  }  
   
-  .post_datetime{  
-    margin-top:5px;  
-    margin-left: $post-avatar-size + 10px;
-    font-size: 9pt;
-    font-style: italic;
-    color: #585858;
+  .post_menu{
+    float:right;
+    text-align: right;
+    img{      
+      width: 15px;
+      height: 15px;
+    }
+    .post_menu_menu{      
+      padding:5px;
+      background-color: teal;
+      display:none;
+    }    
   }
   
   .post_text{
@@ -70,6 +85,7 @@ $main-color: #008000;
      }
   }
   .post_comment_text{
+    margin-left:5px;
     display:inline-block;
     textarea{
       padding:5px;
@@ -89,8 +105,8 @@ $main-color: #008000;
     float:right;
     margin-top: 5px;
     input{
-      width: $post-avatar-size/2;
-      height: $post-avatar-size/2;
+      width: $post-avatar-size/3;
+      height: $post-avatar-size/3;
     }
   }    
   
