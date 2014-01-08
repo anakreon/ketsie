@@ -20,19 +20,29 @@ class PostsController < ApplicationController
   end
   
   def like
-    @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
+    @post_id = params[:post_id];     
+    @like = Like.find_by(post_id: @post_id, user_id: current_user.id)
     @response_text = ""
     if(@like)
       @like.destroy      
       @response_text = get_like_text();
     else
       @like = Like.new
-      @like.post_id = params[:post_id]
+      @like.post_id = @post_id
       @like.user_id = current_user.id
       if @like.save then @response_text = get_unlike_text() end
     end
-    respond_to do |format|
-      format.json { render :json => {"op_type"=>"like", "post_id"=>params[:post_id], "response_text"=>@response_text} }      
+    
+    @liked_by = Array.new    
+    @likes = Like.where(post_id: @post_id)
+    if @likes   
+      @likes.each do |like|
+        @liked_by.push(like.user)
+      end       
+    end         
+     
+    respond_to do |format|      
+      format.js      
     end   
   end
   
@@ -61,8 +71,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url }
+    respond_to do |format|      
       format.json { head :no_content }
     end
   end

@@ -5,11 +5,8 @@
 	  </div>
 	  <div class='new_image'>
 	  	<%= image_tag "green_photo.png", :alt => "new_image" %>
-	  </div>
-	  <div class='new_post_submit'>
-	  	 <%= f.submit %>
 	  </div>	  
-	   
+
 	  <% if @new_post.errors.any? %>
 		  <div id="error_explanation">
 		    <h2><%= pluralize(@new_post.errors.count, "error") %> prohibited
@@ -24,3 +21,4 @@
 	  
 	<% end %>
 </div>
+<div id='sel_post_id' post_id=<%= @current_post.id %> style="display:none;"></div>

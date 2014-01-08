@@ -7,19 +7,15 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new
     @comment.user_id = current_user.id
     @comment.text = params[:comment][:text]    
-    if @comment.save
-      redirect_to root_url
-    else
-      redirect_to root_url
-    end    
+    @comment.save
+    render @comment    
   end
   
   def destroy
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url }
+    @comment = @post.comments.find(params[:id])    
+    @comment.destroy if @comment.user_id == current_user.id
+    respond_to do |format|      
       format.json { head :no_content }
     end
   end
@@ -27,7 +23,7 @@ class CommentsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     respond_to do |format|
-      format.html { render @post.comments }      
+      format.js
     end
   end
   

@@ -1,1 +1,11 @@
 
+#images_fixed{
+  .image_delete{
+    display:none;    
+    float:right;
+    img{
+      width:15px;
+      height:15px;
+    }
+  } 
+}

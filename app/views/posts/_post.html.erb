@@ -11,12 +11,14 @@
 				<%= l post.updated_at, :format => :default %>				
 			</div>
 		</div>
+		<% if post.user.id == current_user.id %>
 		<div class='post_menu'>
 			<%= image_tag "post_menu.png", :alt => "post_menu", :class => 'link' %>
 			<div class='post_menu_menu'>
-				<ul><li>edit</li><li>delete</li></ul>
+				<ul><li class='link' type='edit' post_id='<%= post.id %>'><%= (t 'posts.edit', scope: :custom) %></li><li class='link' type='delete' post_id='<%= post.id %>'><%= (t 'posts.delete', scope: :custom) %></li></ul>
 			</div>
 		</div>
+		<% end %>
 	</div>
 	<div class='post_text'>
 		<%= raw post.text %>

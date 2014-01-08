@@ -46,8 +46,21 @@ $main-color: #008000;
     }
     .post_menu_menu{      
       padding:5px;
-      background-color: teal;
-      display:none;
+      background-color: #8BEA73;
+      display:none;     
+      @include rounded-corners(3px);      
+      font-weight:bold; 
+      font-size: 9pt;      
+      li{
+        color: $main-color;
+        padding-top:2px;            
+        &:hover{
+          outline: none;
+          color: white;                      
+          //border:1px solid #8BEA73;
+          //box-shadow: 0 0 10px #8BEA73;
+        }
+      }
     }    
   }
   
@@ -94,7 +107,7 @@ $main-color: #008000;
       overflow: hidden;
       height: 28px;
       &:focus{
-          outline: none !important;
+          outline: none;
           border:1px solid #8BEA73;
           box-shadow: 0 0 10px #8BEA73;
         }

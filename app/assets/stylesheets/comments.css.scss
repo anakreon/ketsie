@@ -1,4 +1,11 @@
 $comment-avatar-size: 40px;
+$main-color: #008000;
+
+@mixin rounded-corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
 
 .comment{
   
@@ -17,19 +24,48 @@ $comment-avatar-size: 40px;
       height: $comment-avatar-size;
     }
   }
-  
-  .comment_commenter{
-    padding-top: 5px;       
-    margin-left: $comment-avatar-size + 10px;
-    font-weight: bold;
+  .comment_nametime{
+    padding-top:2px;     
+    margin-left: 0px;
+    float:left; 
+    
+    .comment_commenter{  
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    
+    .comment_datetime{  
+      margin-top:5px;  
+      margin-left: 10px;
+      font-size: 9pt;
+      font-style: italic;
+      color: #585858;
+    }
   }
   
-  .comment_datetime{  
-    margin-top:5px;  
-    margin-left: $comment-avatar-size + 10px;
-    font-size: 9pt;
-    font-style: italic;
-    color: #585858;
+  .comment_menu{
+    float:right;
+    text-align: right;
+    img{      
+      width: 10px;
+      height: 10px;
+    }
+    .post_menu_menu{      
+      background-color: #8BEA73;
+      padding:3px;
+      display:none;     
+      @include rounded-corners(3px);      
+      font-weight:bold; 
+      font-size: 9pt;      
+      li{
+        color: $main-color;
+        padding-top:1px;            
+        &:hover{
+          outline: none;
+          color: white;                              
+        }
+      }
+    }    
   }
   
   .comment_text{

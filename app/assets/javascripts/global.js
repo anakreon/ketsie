@@ -4,28 +4,6 @@ $(document).ready(function(){
 });
 
 function event_listeners(){
-	//global ajaxSuccess
-	$(document).ajaxSuccess(function( event, xhr, settings ){		
-		var responseObject;
-		try {
-			responseObject = $.parseJSON(xhr.responseText);
-		} catch (e) {}		
-		if(typeof responseObject =='object'){  					
-			switch(responseObject.op_type){
-				case 'like':				
-					Posts.handlers.like_handler(responseObject);			
-					break;				
-				default:
-			}
-		}else{
-			if(/\/posts\/\d+\/images/.test(settings.url+"")){						
-				Images.load_images(xhr.responseText);
-			}
-			if(/\/posts\/\d+\/comments/.test(settings.url+"")){				
-				Comments.load_comments(xhr.responseText);
-			}
-		}
-	});
 	
 	$(document).on('click', function(event){		
 		Posts.handlers.hide_menu();
@@ -41,14 +19,21 @@ function event_listeners(){
 	$('#post_text').on('keydown',Posts.output.new_post_resize);
 	$('#post_text').on('click',Posts.handlers.new_post_text);
 	$('#post_text').on('blur',Posts.handlers.new_post_blur);
+	$('#post_text').on('keyup', Posts.handlers.new_post_submit);
 	$('.post_comment_text textarea').on('change',function(){
 		Posts.output.post_comment_resize($(this));
 	});
 	$('.post_comment_text textarea').on('keydown', function(){
 		Posts.output.post_comment_resize($(this));
 	});
+	
+	$('.post_comment_text textarea').on('keyup', Comments.new_comment_submit);
+	
 	$('#main_logo').on('click',location_reload);	
+	
 	$('.post_menu').on('click',Posts.handlers.post_menu);
+	$('.post_menu li').on('click',Posts.handlers.post_menu_li);	
+	$('.new_comment').on('submit',Posts.handlers.add_comment);
 	
 }
 

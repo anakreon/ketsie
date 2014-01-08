@@ -1,0 +1,6 @@
+$(document).ready(function(){
+	
+	Comments.load_comments('<%= escape_javascript(render @post.comments) %>');
+	Comments.comment_listeners();
+
+});

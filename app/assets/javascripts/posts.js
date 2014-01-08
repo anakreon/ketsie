@@ -1,10 +1,7 @@
 var Posts = {}; 
 Posts.handlers = (function(){
-	return{
-		like_handler: function(response_object){
-			Posts.output.like_text(response_object.post_id, response_object.response_text);
-		},
-		post_images_comments_handler: function(post_div){
+	return{		
+		post_images_comments_handler: function(post_div){			
 			Posts.output.post_lightmark(post_div);
 			$.ajax({
 			  type: "GET",
@@ -13,7 +10,8 @@ Posts.handlers = (function(){
 			$.ajax({
 			  type: "GET",
 			  url: '/posts/'+$(post_div).attr('post_id')+'/images'
-			});
+			});			
+			Posts.output.set_post_id($(post_div).attr('post_id'));
 		},
 		new_post_blur: function(event){
 			if($('#post_text').val() == "") Posts.output.new_post_default_text();
@@ -25,23 +23,55 @@ Posts.handlers = (function(){
 			}
 		},
 		post_menu: function(event){
-			Posts.output.post_menu();
+			Posts.output.hide_menu();
+			Posts.output.post_menu($(this).children('.post_menu_menu'));								
+			event.stopPropagation();							
+		},
+		post_menu_li: function(event){
+			Posts.output.hide_menu();
+			Posts.helpers.post_menu_redirect($(this));
 			event.stopPropagation();
 		},
 		hide_menu: function(event){
 			Posts.output.hide_menu();
+		},
+		new_post_submit: function(event){
+			if (event.keyCode == 13){
+				$('#new_post').submit();
+			}
+		},
+		add_comment: function(event){
+			var valuesToSubmit = $(this).serialize();
+			var form = $(this);
+		    $.ajax({
+		      url: $(this).attr('action'), //sumbits it to the given url of the form
+		      data: valuesToSubmit,
+		      type: 'POST',		      
+		      success: function(response){
+		      	form.find('textarea').val('');
+		     	Comments.add_comment(response);
+		      }
+		    });
+		    
+		    return false; // prevents normal behaviour		
 		}
 	};
 })();
 
 Posts.output = (function(){
 	return{
-		like_text: function(post_id,like_text){
+		like_text: function(post_id,like_text,liked_by){
 			var like_element = $('#a_likeLink_'+post_id);		
 			like_element.text(like_text); 
 		},
+		like_likedby: function(post_id, liked_by){
+			var likedby_element = $('.post[post_id="'+post_id+'"]').children('.post_liked_by');
+			likedby_element.text(liked_by);			
+		},		
 		post_lightmark: function(post_div){
-			$(post_div).css('background-color','lightred');
+			$('.post').css('box-shadow','none');
+			$(post_div).css('outline','none');
+			$(post_div).css('box-shadow','1px 1px 5px #008000');					
 		},
 		new_post_resize: function(){
 			$('#post_text').css('height','auto');
@@ -55,11 +85,14 @@ Posts.output = (function(){
 			text_element.css('height','auto');
 			text_element.css('height',text_element[0].scrollHeight);        	
 		},
-		post_menu: function(post_menu){			
-			$('.post_menu_menu').first().css('display','block');			
+		post_menu: function(post_menu_element){						
+			post_menu_element.slideDown(150);			
 		},
-		hide_menu: function(){			
-			$('.post_menu_menu').css('display','none');
+		hide_menu: function(){						
+			$('.post_menu_menu').slideUp(150);
+		},
+		set_post_id: function(post_id){
+			$('#sel_post_id').attr('post_id',post_id);
 		}
 	};
 })();
@@ -67,8 +100,26 @@ Posts.output = (function(){
 Posts.helpers = (function(){
 	return{
 		load_first_post_data: function(){
-			var first_post = $('div.post').first();
+			var sel_post_id = $('#sel_post_id').attr('post_id');
+			var first_post = $(document).find('div.post[post_id="'+sel_post_id+'"]');
 			if(first_post) Posts.handlers.post_images_comments_handler(first_post[0]);
+		},
+		post_menu_redirect: function(element){
+			switch(element.attr('type')){
+				case 'edit':
+				
+				break;
+				case 'delete':					
+					$.ajax({
+					  type: "DELETE",
+					  url: '/posts/'+element.attr('post_id'),
+					  success: function() {					  	
+					  	$('.post[post_id="'+element.attr('post_id')+'"]').remove();
+					  }
+					});
+					break;
+				default:
+			}
 		}
 	};	
 })();

@@ -1,0 +1,5 @@
+$(document).ready(function(){
+	Posts.output.like_text(<%= @post_id %>, "<%= @response_text %>");
+	var liked_by_html = '<%= escape_javascript(render partial: "posts/liked_by", locals:{liked_by_reference: @liked_by}); %>';
+	Posts.output.like_likedby(<%= @post_id %>, liked_by_html);
+});

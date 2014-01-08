@@ -1,7 +1,12 @@
 <% if image.file_type =~ /^image\/.*?(png|jpeg|gif)$/ %> 
-	<div class='image_preview link'>
-		<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name%>
-		<p style='display:none;'><%= image.description %></p>							
-		<!-- <%= link_to (t 'images.delete_image', scope: :custom), "images/"+image.id.to_s, method: :delete, data: { confirm: (t 'confirm') } if (!@post.nil?) && (@post.user_id == current_user.id) %> -->
+	<div class='img_preview_wrapper'>
+		<div class='image_preview link'>
+			<%= image_tag url_for({:controller => "images", :action => 'image', :id=> image.id}), :alt => image.file_name%>
+			<p style='display:none;'><%= image.description %></p>							
+			<!-- <%= link_to (t 'images.delete_image', scope: :custom), "images/"+image.id.to_s, method: :delete, data: { confirm: (t 'confirm') } if (!@post.nil?) && (@post.user_id == current_user.id) %> -->
+		</div>
+		<div class='image_delete link'>
+			<%= image_tag "remove.png", :alt => "img_remove", :class => 'link' %>
+		</div>
 	</div>
 <% end %>	               		               		 		               

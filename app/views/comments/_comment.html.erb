@@ -1,14 +1,24 @@
-<div class='comment'>
+<div class='comment' comment_id='<%= comment.id %>'>
   <div class='comment_header'>
 	  <div class='comment_avatar'>
 	  	<%= render partial: "user_infos/show_avatar", locals:{user_info: comment.user.user_info} %><br />
 	  </div>
-	  <div class='comment_commenter'>
-	  	<%= comment.user.screenname %>	
+	  <div class='comment_nametime'>
+		  <div class='comment_commenter'>
+		  	<%= comment.user.screenname %>	
+		  </div>
+		  <div class='comment_datetime'>  	
+			<%= l comment.updated_at, :format => :short %>	
+		  </div>
 	  </div>
-	  <div class='comment_datetime'>  	
-		<%= l comment.updated_at, :format => :default %>	
+	  <% if comment.user.id == current_user.id %>
+	  <div class='comment_menu'>
+			<%= image_tag 'post_menu.png', :alt => 'comment_menu', :class => 'link' %>
+			<div class='post_menu_menu'>
+				<ul><li class='link' type='edit' post_id='<%= comment.post.id %>' comment_id='<%= comment.id %>'><%= (t 'posts.edit', scope: :custom) %></li><li class='link' type='delete' post_id='<%= comment.post.id %>' comment_id='<%= comment.id %>'><%= (t 'posts.delete', scope: :custom) %></li></ul>
+			</div>
 	  </div>
+	  <% end %>
   </div>
   <div class='comment_text'>  
   	<%= comment.text %>

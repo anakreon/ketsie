@@ -148,20 +148,27 @@ ul{
       position: fixed;
       top: $header-height;
       //text-align:right;
-      .image_preview{
-        display:inline-block;
+      .img_preview_wrapper{
+        float: left;
+        padding: 3px;
+        &:hover{
+          background-color:lightgrey;
+          @include rounded-corners(5px);
+        }        
+      }      
+      .image_preview{        
         @include rounded-corners(5px);
         background-color: $main-bg-color;
       }
       .image_preview img{
-        width: (($left-width - 11px)/3);
+        width: (($left-width - 12px)/4);
         height: auto;
       }
       #image_detail{
         @include rounded-corners(5px);
         background-color: $main-bg-color;
         padding: 5px;
-        margin-bottom:10px;
+        margin-bottom:5px;
         width:$left-width - 20px;
         #image_detail_img{
           text-align:center;
@@ -233,6 +240,10 @@ ul{
       .post_comment_text textarea{
         width: $app-width - ($left-width + $right-width) - 100px;        
       }
+      /*&:hover{
+        box-shadow: 1px 1px 5px #008000;
+        outline: none;
+      }*/
     }
 
   }
