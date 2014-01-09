@@ -31,6 +31,11 @@
 	<div class='post_text'>
 		<%= raw post.text %>
 	</div>
+	<div class='post_edit'>	
+		<%= form_for post, url: {:controller=>"posts", :action=>"update", :id => post.id}, namespace: 'post'+post.id.to_s do |f| %>
+		  	<%= f.text_area :text %>		    
+	    <% end %>  
+	</div>
 	<div class='post_likeable'>
 		<%= render partial: "posts/likeable", locals:{likeable_reference: @likeable[post.id], post: post}  %>
 	</div>

@@ -27,4 +27,11 @@ class CommentsController < ApplicationController
     end
   end
   
+  def update
+    @comment = current_user.comments.find(params[:id])   
+    @comment.update(params[:comment].permit(:text))   
+    redirect_to root_url
+  end
+  
+  
 end

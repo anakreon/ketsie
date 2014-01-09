@@ -7,6 +7,12 @@ $main-color: #008000;
   -webkit-border-radius: $radius;
 }
 
+@mixin boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
 .post{
   font-family: "Latin Modern Sans 10 Bold Oblique", Arial;
   font-size: 11pt;
@@ -67,6 +73,18 @@ $main-color: #008000;
   .post_text{
     margin-top: 5px;
     margin-bottom: 10px;
+  }
+  
+  .post_edit{
+    display:none;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    textarea{
+      resize: none;
+      width:100%;
+      overflow:auto;
+      @include boxsizingBorder;
+    }
   }
   
   .post_likeable{

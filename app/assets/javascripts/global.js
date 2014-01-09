@@ -7,6 +7,16 @@ function event_listeners(){
 	
 	$(document).on('click', function(event){		
 		Posts.handlers.hide_menu();
+		
+	});
+	
+	//esc
+	$(document).on('keyup',function(event){
+		if(event.keyCode == 27){
+			Posts.output.hide_menu();
+			Posts.output.cancel_text_edit();
+			Comments.cancel_text_edit();
+		}
 	});
 	
 	$('div.post').on('click',function(event){		
@@ -43,6 +53,8 @@ function event_listeners(){
 		window.location = '/user_infos/'+$(this).children('img').attr('user_id')+'/edit';
 	});
 	$('.new_image_input').on('change',Images.add_image_submit);
+	$('.post_edit textarea').on('keydown', Posts.handlers.post_update_submit);
+	
 	
 }
 

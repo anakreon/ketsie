@@ -72,4 +72,15 @@ $main-color: #008000;
     margin-top:0px;  
   }
   
+  .comment_edit{
+    display:none;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    textarea{
+      resize: none;
+      width:95%;
+      overflow:auto;     
+    }
+  }
+  
 }

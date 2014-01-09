@@ -24,6 +24,7 @@ var Comments = (function(){
 			$('.comment_menu li').off();
 			$('.comment_menu').on('click',Posts.handlers.post_menu);
 			$('.comment_menu li').on('click',Comments.post_menu_li);
+			$('.comment_edit textarea').on('keydown', Comments.comment_update_submit);
 		},
 		post_menu_li: function(event){
 			Posts.output.hide_menu();
@@ -33,7 +34,7 @@ var Comments = (function(){
 		comment_menu_redirect: function(element){
 			switch(element.attr('type')){
 				case 'edit':
-				
+					Comments.edit_comment_text(element);
 				break;
 				case 'delete':					
 					$.ajax({
@@ -51,6 +52,23 @@ var Comments = (function(){
 			if (event.keyCode == 13){
 				$(this).closest('form').submit();
 			}
+		},
+		comment_update_submit: function(event){
+			if (event.keyCode == 13){
+				$(this).closest('form').submit();
+				return false;
+			}
+		},
+		edit_comment_text: function(element){
+			element.closest('div.comment').children('div.comment_text').css('display','none');
+			var text = element.closest('div.comment').children('div.comment_text').val();
+			element.closest('div.comment').children('div.comment_edit').children('textarea').html(text);
+			element.closest('div.comment').children('div.comment_edit').css('display','block');
+		},
+		cancel_text_edit: function(event){
+			$('div.comment_text').css('display','block');
+			$('div.comment_edit').css('display','none');
+			$('div.comment_edit').children('textarea').html('');
 		}
 	};
 })();

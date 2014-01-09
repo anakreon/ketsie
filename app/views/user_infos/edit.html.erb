@@ -14,6 +14,10 @@
   </div>
   <% end %>  
   
+  <b>
+  <%= link_to (t 'layouts.english', scope: :custom), "?locale=en", :class => 'navbar-link' %> ||
+  <%= link_to (t 'layouts.czech', scope: :custom), "?locale=cs", :class => 'navbar-link' %>
+  </b>
   <% if !@user_info.file_name.nil? && @user_info.file_name.length > 0 %>
   <p>  	 
   	<%= image_tag url_for({:action => 'avatar', :id=> @user_info.id, :filename => @user_info.file_name}), :alt => @user_info.file_name %> 
