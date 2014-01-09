@@ -13,10 +13,7 @@
 					<li id='currentuser_avatar' class='link'>					
 			  			<%= render partial: "user_infos/show_avatar", locals: {user_info: @current_user.user_info } %>
 					</li>
-				</ul>
-				<!--<span>	
-					<%= link_to (t 'layouts.logout', scope: :custom), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-				</span> -->
+				</ul>				
 			<% end %>
 		</section>
 	</div>

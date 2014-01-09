@@ -3,6 +3,9 @@ class UserInfosController < ApplicationController
   before_action :authenticate_user!
   
   def edit
+    @followed = current_user.followed_users.all  
+    @following = current_user.following_users.all  
+    
     @user = current_user
     @user_info = current_user.user_info
     if @user_info.nil? then      

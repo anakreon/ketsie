@@ -3,7 +3,7 @@
 <%= (t 'home.following', scope: :custom) %>:
 <br />
     <p>	
-    	<%= user.screenname %> <%= link_to (t 'home.unfollow', scope: :custom), "followers/"+user.id.to_s, method: :delete, data: { confirm: (t 'home.unfollow_confirm', scope: :custom) } %>         
+    	<%= user.screenname %> <b><%= link_to (t 'home.unfollow', scope: :custom), "/followers/"+user.id.to_s, method: :delete, data: { confirm: (t 'home.unfollow_confirm', scope: :custom) } %>  </b>       
       <br /> 
     </p>
  <% end %>
