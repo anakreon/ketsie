@@ -18,10 +18,10 @@ class ImagesController < ApplicationController
       :file_type => @file.content_type, 
       :image_data => @file.read
     )        
-    if @image.save
-      redirect_to root_url
-    else
-      render 'new'
+    @image.save
+    respond_to do |format|
+      format.html { head :no_content }
+      format.json { head :no_content }
     end
   end  
     

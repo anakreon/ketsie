@@ -29,11 +29,20 @@ function event_listeners(){
 	
 	$('.post_comment_text textarea').on('keyup', Comments.new_comment_submit);
 	
-	$('#main_logo').on('click',location_reload);	
+	$('#main_logo').on('click',function(){
+		window.location = '/';
+	});	
 	
 	$('.post_menu').on('click',Posts.handlers.post_menu);
 	$('.post_menu li').on('click',Posts.handlers.post_menu_li);	
 	$('.new_comment').on('submit',Posts.handlers.add_comment);
+	$('#currentuser_screenname').on('click',function(){
+		window.location = '/users/edit';
+	});
+	$('#currentuser_avatar').on('click',function(){
+		window.location = '/user_infos/'+$(this).children('img').attr('user_id')+'/edit';
+	});
+	$('.new_image_input').on('change',Images.add_image_submit);
 	
 }
 

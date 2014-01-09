@@ -12,14 +12,22 @@
 			</div>
 		</div>
 		<% if post.user.id == current_user.id %>
+		
 		<div class='post_menu'>
 			<%= image_tag "post_menu.png", :alt => "post_menu", :class => 'link' %>
 			<div class='post_menu_menu'>
 				<ul><li class='link' type='edit' post_id='<%= post.id %>'><%= (t 'posts.edit', scope: :custom) %></li><li class='link' type='delete' post_id='<%= post.id %>'><%= (t 'posts.delete', scope: :custom) %></li></ul>
 			</div>
-		</div>
+		</div>		
 		<% end %>
 	</div>
+	<% @new_img = post.images.new %>
+	<%= form_for @new_img, url: {:controller=>"images", :action=>"create", :post_id => post.id}, namespace: 'post'+post.id.to_s do |i| %>
+	  <div class='new_image_div'>
+	  	<%= i.file_field :image_data, :class => "new_image_input", :post_id => post.id %> 		  	
+	  	<%= image_tag "green_photo.png", :class=> "link", :alt => "new_image" %>
+	  </div>			    
+    <% end %>  
 	<div class='post_text'>
 		<%= raw post.text %>
 	</div>

@@ -3,10 +3,7 @@
 	  <div class='new_post_text'>	   
 	    <%= f.text_area :text %>
 	  </div>
-	  <div class='new_image'>
-	  	<%= image_tag "green_photo.png", :alt => "new_image" %>
-	  </div>	  
-
+	  
 	  <% if @new_post.errors.any? %>
 		  <div id="error_explanation">
 		    <h2><%= pluralize(@new_post.errors.count, "error") %> prohibited

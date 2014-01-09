@@ -14,6 +14,13 @@ var Images = (function(){
 			$('.image_preview').on('click',function(event){				
 				Images.load_image_preview($(this).children('img'),$(this).children('p'));				
 			});
-		}		
+		},
+		add_image_submit: function(event){
+			$(this).closest('form.new_image').submit();
+			$.ajax({
+			  type: "GET",
+			  url: '/posts/'+$(this).attr('post_id')+'/images'
+			});		
+		}	
 	};
 })();

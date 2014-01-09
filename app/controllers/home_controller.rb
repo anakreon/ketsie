@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   
   before_action :authenticate_user!
   
-  def index
+  def index   
     @current_post = nil
     
     @current_user = current_user     
@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     @followed_users = current_user.followed_users.all    
     @followed_users.each do |user|
       user.posts.each do |post|
-        @posts.push(post)
+        @posts.push(post) if !post.text.nil?
       end
     end    
     
@@ -34,7 +34,8 @@ class HomeController < ApplicationController
       @current_post = params[:post_id]
     end
     
-    @new_post = current_user.posts.new     
+    @new_post = current_user.posts.new
+      
   end
   
 end

@@ -7,10 +7,10 @@
 		<section id='top_menu'>
 			<% if user_signed_in? %>
 				<ul id='ul_top_menu'>
-					<li id='currentuser_screenname'>		
+					<li id='currentuser_screenname' class='link'>		
 						<%= @current_user.screenname %>
 					</li>
-					<li id='currentuser_avatar'>					
+					<li id='currentuser_avatar' class='link'>					
 			  			<%= render partial: "user_infos/show_avatar", locals: {user_info: @current_user.user_info } %>
 					</li>
 				</ul>
