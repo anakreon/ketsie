@@ -16,9 +16,7 @@ class FollowersController < ApplicationController
     @follower.followed_user = User.find(params[:user][:id])
     @follower.following_user = current_user   
     if @follower.save
-      redirect_to root_url
-    else      
-      render 'new'
+      redirect_to root_url   
     end
   end
   

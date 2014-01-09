@@ -1,6 +1,11 @@
-<div id='image_detail'>
+<div id='image_detail' image_id=''>
+	<% if @post.user.id == current_user.id %>
+		<div id='image_delete'>
+			<%= image_tag "remove.png", :alt => "img_remove", :class => 'link' %>
+		</div>
+	<% end %>
 	<div id='image_detail_img'></div>
-	<div id='image_detail_descr'></div>
+	<div id='image_detail_descr'></div>	
 </div>
 <%= render @post.images %>
 

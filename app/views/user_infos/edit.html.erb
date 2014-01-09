@@ -1,55 +1,61 @@
-<div id='edit_user_infos'>
-<h2><%= (t 'user_infos.editing_user_data', scope: :custom) %></h2>
- 
- <%= form_for @user_info do |f| %>
-  <% if @user_info.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user_info.errors.count, "error") %> prohibited
-      this post from being saved:</h2>
-    <ul>
-    <% @user_info.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<div id='user_info_wrapper'>
+	<div class='main_background' id='edit_user_infos'>
+	<h2><%= (t 'user_infos.editing_user_data', scope: :custom) %></h2>
+  <div >	 
+	 <%= form_for @user_info do |f| %>
+	  <% if @user_info.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= pluralize(@user_info.errors.count, "error") %> prohibited
+	      this post from being saved:</h2>
+	    <ul>
+	    <% @user_info.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	  <% end %>  
+	  <div id='user_info_avatar'>
+	  <% if !@user_info.file_name.nil? && @user_info.file_name.length > 0 %>
+		  <span>  	 
+		  	<%= image_tag url_for({:action => 'avatar', :id=> @user_info.id, :filename => @user_info.file_name}), :alt => @user_info.file_name %> 		  
+		  	<b><%= link_to (t 'user_infos.delete_avatar', scope: :custom), "destroyAvatar", data: { confirm: (t 'confirm') } %></b>
+		  </span>
+		  <% end %>
+	  </div>
+	 
+	  <div id='user_info_descr'>
+	    <div><%= f.label :personal_description %></div>
+	    <div><%= f.text_area :personal_description %></div>
+	  </div>
+	  
+	  <div> 
+	   <%= f.label :avatar_image %> 
+	   <%= f.file_field :avatar_image %> 
+	  </div> 
+	  	 
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	<% end %>
+	</div>
   </div>
-  <% end %>  
-  
-  <% if !@user_info.file_name.nil? && @user_info.file_name.length > 0 %>
-  <p>  	 
-  	<%= image_tag url_for({:action => 'avatar', :id=> @user_info.id, :filename => @user_info.file_name}), :alt => @user_info.file_name %> 
-  </p>
-  	<%= link_to (t 'user_infos.delete_avatar', scope: :custom), "destroyAvatar", data: { confirm: (t 'confirm') } %>
-  <% end %>
- 
-  <p>
-    <%= f.label :personal_description %><br>
-    <%= f.text_area :personal_description %>
-  </p>
-  
-  <div> 
-   <%= f.label :avatar_image %> 
-   <%= f.file_field :avatar_image %> 
-  </div> 
-  <br /> 	 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-  <b>
-  <%= link_to (t 'layouts.english', scope: :custom), "?locale=en", :class => 'navbar-link' %> ||
-  <%= link_to (t 'layouts.czech', scope: :custom), "?locale=cs", :class => 'navbar-link' %>
-  </b>
-  <br />
-  <br />
-  <b><%= link_to((t 'home.follow', scope: :custom), new_follower_path) %>  </b>
-  <br />
-  ------------------------------<br />
-  <%= render "home/followed", controller:'home' %>
-  ------------------------------<br />
-  <%= render "home/following", controller:'home' %>
-  <span>	
-	<%= link_to (t 'layouts.logout', scope: :custom), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  </span>
-
+  <div class='main_background' id='edit_user_locale'>
+	  <b>
+	  <%= link_to (t 'layouts.english', scope: :custom), "?locale=en", :class => 'navbar-link' %> ||
+	  <%= link_to (t 'layouts.czech', scope: :custom), "?locale=cs", :class => 'navbar-link' %>
+	  </b>
+  </div>
+  <div class='main_background' id='edit_user_followers'>
+	  <b><%= link_to((t 'home.follow', scope: :custom), new_follower_path) %>  </b> <br />
+	  ------------------------------<br />
+	  <%= render "home/followed", controller:'home' %>
+	  ------------------------------<br />
+	  <%= render "home/following", controller:'home' %>
+  </div>
+  <div class='main_background' id='edit_user_logout'>
+	  <span>	
+		<%= link_to (t 'layouts.logout', scope: :custom), destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+	  </span>
+  </div>	
+	
 </div>

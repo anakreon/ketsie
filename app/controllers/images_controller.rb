@@ -38,16 +38,14 @@ class ImagesController < ApplicationController
     @post = current_user.posts.find(params[:post_id])
     @image = @post.images.find(params[:id])
     @image.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url }
+    respond_to do |format|     
       format.json { head :no_content }
     end
   end
   
   def index
     @post = Post.find(params[:post_id])
-    respond_to do |format|
-      #format.html { render partial: 'images' }
+    respond_to do |format|      
       format.js      
     end
   end

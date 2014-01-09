@@ -14,8 +14,6 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
     if @post.save
       redirect_to root_url
-    else
-      render 'new'
     end
   end
   
@@ -52,16 +50,12 @@ class PostsController < ApplicationController
     if(params[:image])
       @image = @post.images.new(image_params)
       @image.post_id = current_user.id;
-      if !@image.save
-        render 'edit'
-      end
+      @image.save
     end
    
     if @post.update(params[:post].permit(:text))      
       redirect_to root_url
-    else
-      render 'edit'
-    end
+    end    
   end
   
   def show

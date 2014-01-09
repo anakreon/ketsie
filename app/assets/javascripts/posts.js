@@ -61,6 +61,11 @@ Posts.handlers = (function(){
 				$(this).closest('form').submit();
 				return false;
 			}
+		},
+		post_search: function(event){
+			if (event.keyCode == 13){
+				Posts.output.posts_filter($(this).val());
+			}
 		}
 	};
 })();
@@ -111,6 +116,19 @@ Posts.output = (function(){
 			$('div.post_text').css('display','block');
 			$('div.post_edit').css('display','none');
 			$('div.post_edit').children('textarea').html('');
+		},
+		posts_filter: function(filter){
+			if(filter){
+				$('div.post').filter(function(index) {
+    				return !($(this).children('.post_text').html().indexOf(filter) >= 0);
+  				}).css("display", "none");
+  				
+  				$('div.post').filter(function(index) {
+    				return ($(this).children('.post_text').html().indexOf(filter) >= 0);
+  				}).css("display", "block");
+			}else{
+				$('div.post').css("display", "block");
+			}
 		}
 	};
 })();

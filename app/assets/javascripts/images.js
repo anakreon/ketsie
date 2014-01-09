@@ -4,10 +4,11 @@ var Images = (function(){
 			$('#images_fixed').html(images_data); 
 			Images.load_image_preview($('.image_preview img').first(),$('.image_preview p').first());
 			Images.set_image_preview_listener();
+			Images.delete_image_listener();
 		},
-		load_image_preview: function(img, descr){
+		load_image_preview: function(img, descr){			
 			$('#image_detail_img').html(img.clone());
-			$('#image_detail_descr').html(descr.html());			
+			$('#image_detail_descr').html(descr.html());					
 		},
 		set_image_preview_listener: function(){				
 			$('.image_preview').off();
@@ -21,6 +22,23 @@ var Images = (function(){
 			  type: "GET",
 			  url: '/posts/'+$(this).attr('post_id')+'/images'
 			});		
-		}	
+		},
+		delete_image_listener: function(){
+			$('#image_delete img').off();
+			$('#image_delete img').on('click',Images.delete_image);
+		},
+		delete_image: function(event){
+			var deleted_image = $(this).closest('#image_detail').find('#image_detail_img img');
+			$.ajax({
+			  type: "DELETE",
+			  url: '/posts/'+deleted_image.attr('post_id')+'/images/'+deleted_image.attr('image_id'),
+			  success: function(){
+			  	$.ajax({
+				  type: "GET",
+				  url: '/posts/'+deleted_image.attr('post_id')+'/images'
+				});	
+			  }
+			});		
+		}
 	};
 })();

@@ -31,8 +31,6 @@ class UserInfosController < ApplicationController
     end
     if @user_info.save
       redirect_to root_url
-    else
-      render 'edit'
     end
   end
   
@@ -43,8 +41,6 @@ class UserInfosController < ApplicationController
     @user_info.file_name = ""
     if @user_info.save
       redirect_to root_url
-    else
-     render 'edit'
     end
   end
   

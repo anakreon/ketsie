@@ -56,6 +56,9 @@ var Comments = (function(){
 		comment_update_submit: function(event){
 			if (event.keyCode == 13){
 				$(this).closest('form').submit();
+				var text = $(this).closest('div.comment').children('div.comment_edit').find('textarea').val();
+				$(this).closest('div.comment').children('div.comment_text').html(text);
+				Comments.cancel_text_edit();
 				return false;
 			}
 		},

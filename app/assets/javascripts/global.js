@@ -14,7 +14,7 @@ function event_listeners(){
 	$(document).on('keyup',function(event){
 		if(event.keyCode == 27){
 			Posts.output.hide_menu();
-			Posts.output.cancel_text_edit();
+			Posts.output.cancel_text_edit();			
 			Comments.cancel_text_edit();
 		}
 	});
@@ -54,7 +54,7 @@ function event_listeners(){
 	});
 	$('.new_image_input').on('change',Images.add_image_submit);
 	$('.post_edit textarea').on('keydown', Posts.handlers.post_update_submit);
-	
+	$('#post_search').on('keydown', Posts.handlers.post_search);	
 	
 }
 

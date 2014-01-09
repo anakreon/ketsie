@@ -1,31 +1,37 @@
-<h2><%= (t 'devise.edit_reg', scope: :custom) %> <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div><%= (t 'devise.edit_reg2', scope: :custom) %>: <%= resource.unconfirmed_email %></div>
-  <% end %>
-  
-  <div><%= f.label :screenname %><br />
-  <%= f.text_field :screenname %></div>
-
-
-  <div><%= f.label :password %> <i><%= (t 'devise.edit_reg3', scope: :custom) %></i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i><%= (t 'devise.edit_reg4', scope: :custom) %></i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit (t 'update') %></div>
-<% end %>
-
-<h3><%= (t 'devise.edit_reg5', scope: :custom) %></h3>
-
-<p><%= button_to (t 'devise.edit_reg5', scope: :custom), registration_path(resource_name), :data => { :confirm => (t 'confirm') }, :method => :delete %></p>
+<div class='user_edit_wrapper'>
+	<div class='main_background' id='user_edit'>
+		<h2><%= (t 'devise.edit_reg', scope: :custom) %> <%= resource_name.to_s.humanize %></h2>
+		
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+		  <%= devise_error_messages! %>
+		
+		  <div class='edit_label'><%= f.label :email %></div>
+		  <div class='edit_field'><%= f.email_field :email, :autofocus => true %></div>
+		
+		  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+		    <div class='edit_field'><%= (t 'devise.edit_reg2', scope: :custom) %>: <%= resource.unconfirmed_email %></div>
+		  <% end %>
+		  
+		  <div class='edit_label'><%= f.label :screenname %></div>
+		  <div class='edit_field'><%= f.text_field :screenname %></div>
+		
+		
+		  <div class='edit_label'><%= f.label :password %> <i><%= (t 'devise.edit_reg3', scope: :custom) %></i></div>
+		  <div class='edit_field'><%= f.password_field :password, :autocomplete => "off" %></div>
+		
+		  <div class='edit_label'><%= f.label :password_confirmation %></div>
+		  <div class='edit_field'><%= f.password_field :password_confirmation %></div>
+		
+		  <div class='edit_label'><%= f.label :current_password %> <i><%= (t 'devise.edit_reg4', scope: :custom) %></i></div>
+		  <div class='edit_field'><%= f.password_field :current_password %></div>
+		
+		  <div><%= f.submit (t 'update') %></div>
+		<% end %>
+		
+		
+	</div>
+	<div class='main_background' id='user_delete'>
+		<h3><%= (t 'devise.edit_reg5', scope: :custom) %></h3>	
+		<p><%= button_to (t 'devise.edit_reg5', scope: :custom), registration_path(resource_name), :data => { :confirm => (t 'confirm') }, :method => :delete %></p>
+	</div>
+</div>

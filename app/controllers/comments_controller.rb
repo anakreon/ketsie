@@ -30,7 +30,10 @@ class CommentsController < ApplicationController
   def update
     @comment = current_user.comments.find(params[:id])   
     @comment.update(params[:comment].permit(:text))   
-    redirect_to root_url
+    respond_to do |format|      
+      format.json { head :no_content }
+      format.html { head :no_content }
+    end
   end
   
   

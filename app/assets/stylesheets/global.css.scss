@@ -137,6 +137,14 @@ ul{
   section{
     margin:0px;
   } 
+  
+  .main_background{
+      background-color: $main-bg-color;
+      font-family: $default-font-family;   
+      padding: 15px;
+      margin: 10px;
+      @include rounded-corners(5px); 
+    }
  
   #images_section{
     min-height: $min-app-height;
@@ -152,10 +160,14 @@ ul{
       .img_preview_wrapper{
         float: left;
         padding: 3px;
-        &:hover{
-          background-color:lightgrey;
-          @include rounded-corners(5px);
-        }        
+        @include rounded-corners(5px);
+        img{
+          &:hover{
+            box-shadow: 1px 1px 5px $header-bg-color;          
+            
+          }
+        }
+                
       }      
       .image_preview{        
         @include rounded-corners(5px);
@@ -295,5 +307,66 @@ ul{
         margin-bottom: 5px;
       }
     }
+  }
+  
+  .user_edit_wrapper{    
+    .main_background{
+      background-color: $main-bg-color;
+      font-family: $default-font-family;   
+      padding: 15px;
+      margin: 10px;
+      @include rounded-corners(5px); 
+    }
+    
+    #user_edit{          
+      padding-bottom:25px;
+      float:left;
+      padding-left:30px;
+      .edit_label{
+        display:list-item;
+        margin-bottom:5px;
+        font-weight: bold;
+        font-size: 10pt;
+      }    
+      .edit_field{
+        margin-bottom:10px;
+        margin-left:20px;
+      }
+    }
+    #user_delete{
+      float:left;
+      text-align:center;
+    }
+  }
+  
+  #user_info_wrapper{
+    .main_background{
+      background-color: $main-bg-color;
+      font-family: $default-font-family;   
+      padding: 15px;
+      margin: 10px;
+      @include rounded-corners(5px); 
+    }
+    
+    #edit_user_infos{
+      
+      float:left;
+      #user_info_descr{
+        margin-top:15px;
+        margin-bottom:15px;
+        textarea{
+          resize:none;
+        }
+      }
+    }
+    #edit_user_locale{
+      float:left;
+    }    
+    #edit_user_followers{
+      float:left;
+    }   
+    #edit_user_logout{
+      float:right;
+    }     
   }
 }

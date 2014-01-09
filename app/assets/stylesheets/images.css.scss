@@ -1,11 +1,17 @@
 
 #images_fixed{
-  .image_delete{
-    display:none;    
-    float:right;
+  #image_delete{
+    position:absolute;    
+    right: 12px;
+    top: 12px;
     img{
+      opacity:0.4;
       width:15px;
       height:15px;
+      &:hover{
+        -webkit-filter: hue-rotate(240deg) saturate(3.3); 
+        opacity:1;
+      }
     }
   } 
 }

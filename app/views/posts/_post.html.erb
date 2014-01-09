@@ -21,13 +21,15 @@
 		</div>		
 		<% end %>
 	</div>
-	<% @new_img = post.images.new %>
-	<%= form_for @new_img, url: {:controller=>"images", :action=>"create", :post_id => post.id}, namespace: 'post'+post.id.to_s do |i| %>
-	  <div class='new_image_div'>
-	  	<%= i.file_field :image_data, :class => "new_image_input", :post_id => post.id %> 		  	
-	  	<%= image_tag "green_photo.png", :class=> "link", :alt => "new_image" %>
-	  </div>			    
-    <% end %>  
+	<% if post.user.id == current_user.id %>
+		<% @new_img = post.images.new %>
+		<%= form_for @new_img, url: {:controller=>"images", :action=>"create", :post_id => post.id}, namespace: 'post'+post.id.to_s do |i| %>
+		  <div class='new_image_div'>
+		  	<%= i.file_field :image_data, :class => "new_image_input", :post_id => post.id %> 		  	
+		  	<%= image_tag "green_photo.png", :class=> "link", :alt => "new_image" %>
+		  </div>			    
+	    <% end %>
+	<% end %>  
 	<div class='post_text'>
 		<%= raw post.text %>
 	</div>
