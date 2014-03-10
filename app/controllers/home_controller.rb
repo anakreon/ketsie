@@ -6,6 +6,9 @@ class HomeController < ApplicationController
     @current_post = nil
     
     @current_user = current_user     
+    if @current_user.user_info == nil
+      @current_user.user_info = UserInfo.new
+    end
     @posts = current_user.posts.all
     
     @followed_users = current_user.followed_users.all    
@@ -35,6 +38,7 @@ class HomeController < ApplicationController
     end
     
     @new_post = current_user.posts.new
+    @current_post = Post.new if @current_post.nil?  
       
   end
   
