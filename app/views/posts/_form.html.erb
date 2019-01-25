@@ -18,4 +18,6 @@
 	  
 	<% end %>
 </div>
-<div id='sel_post_id' post_id=<%= @current_post.id %> style="display:none;"></div>
+<% if @current_post.id %>
+	<div id='sel_post_id' post_id=<%= @current_post.id %> style="display:none;"></div>
+<% end %>

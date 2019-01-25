@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     if @current_user.user_info == nil
       @current_user.user_info = UserInfo.new
     end
-    @posts = current_user.posts.all
+    @posts = current_user.posts.all.to_a
     
     @followed_users = current_user.followed_users.all    
     @followed_users.each do |user|

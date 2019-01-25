@@ -1,4 +1,4 @@
-class AddUsersInfoTable < ActiveRecord::Migration
+class AddUsersInfoTable < ActiveRecord::Migration[5.0]
   def change
 	create_table :user_infos do |t|
   		t.binary :avatar_image

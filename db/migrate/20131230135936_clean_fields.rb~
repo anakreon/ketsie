@@ -1,4 +1,4 @@
-class CleanFields < ActiveRecord::Migration
+class CleanFields < ActiveRecord::Migration[5.0]
   def change
 	  remove_column :followers, :created
 	  remove_column :likes, :created
